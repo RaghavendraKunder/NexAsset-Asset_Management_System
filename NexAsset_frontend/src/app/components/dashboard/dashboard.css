@@ -1,0 +1,571 @@
+/* =========================================================
+   ASSETFLOW DASHBOARD
+   Midnight Navy + Electric Cyan
+   ========================================================= */
+
+.dashboard-page {
+  min-height: 100vh;
+
+  width: 100%;
+
+  background: #050a14;
+
+  color: #f5f7fa;
+
+  font-family: Arial, sans-serif;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+   ========================================================= */
+
+.dashboard-content {
+  margin-left: 225px;
+
+  min-height: 100vh;
+
+  padding: 23px 24px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   STATISTICS
+   ========================================================= */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+    gap: 13px;
+    margin-top:20px;
+    margin-bottom: 18px;
+}
+
+
+/* Stat card */
+
+.stat-card {
+  min-height: 95px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  box-sizing: border-box;
+  border: 1px solid #1b304b;
+  border-radius: 9px;
+  background: #0d1626;
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.stat-card:hover {
+  border-color: rgba(0, 212, 255, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Stat information */
+.stat-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stat-label {
+    color: #7190b8;
+    font-size: 11px;
+    font-weight: 650;
+    letter-spacing: 1px;
+}
+
+.stat-value {
+  color: #f5f7fa;
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+
+/* Stat icon */
+
+.stat-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00d4ff;
+  background: rgba(0, 212, 255, 0.025);
+  border-radius: 7px;
+}
+
+.stat-icon mat-icon {
+  width: 20px;
+  height: 20px;
+
+  font-size: 19px;
+}
+
+.value-icon {
+  color: #00d4ff;
+}
+
+
+/* =========================================================
+   DASHBOARD GRID
+   ========================================================= */
+
+.dashboard-grid {
+  display: grid;
+
+  grid-template-columns: 330px minmax(0, 1fr);
+
+  gap: 18px;
+
+  margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   GENERIC CARD
+   ========================================================= */
+
+.dashboard-card {
+  background: #0d1626;
+
+  border: 1px solid #1b304b;
+
+  border-radius: 9px;
+
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CARD HEADER
+   ========================================================= */
+.card-header {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #f5f7fa;
+  font-size: 16px;
+  font-weight: 720;
+}
+
+.card-title mat-icon {
+  width: 20px;
+  height: 20px;
+  color: #00d4ff;
+  font-size: 20px;
+}
+
+
+/* =========================================================
+   STATUS BREAKDOWN
+   ========================================================= */
+
+.status-card {
+  min-height: 300px;
+}
+
+.status-list {
+  padding: 0 18px 18px;
+}
+
+
+/* Status row */
+
+.status-row {
+  margin-bottom: 14px;
+}
+
+.status-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 7px;
+
+  color: #7c9ac0;
+
+  font-size: 13px;
+}
+
+.status-top strong {
+  color: #f5f7fa;
+
+  font-size: 11px;
+}
+
+
+/* Progress */
+
+.progress-track {
+  width: 100%;
+
+  height: 7px;
+
+  overflow: hidden;
+
+  border-radius: 5px;
+
+  background: #17253a;
+}
+
+.progress-bar {
+  height: 100%;
+
+  border-radius: inherit;
+}
+
+.progress-bar.available {
+  background: #00c98d;
+}
+
+.progress-bar.assigned {
+  background: #ffab00;
+}
+
+.progress-bar.repair {
+  background: #ff791f;
+}
+
+
+/* Repair warning */
+
+.repair-warning {
+  height: 49px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  margin-top: 24px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 171, 0, 0.28);
+  border-radius: 6px;
+  background: rgba(255, 171, 0, 0.035);
+  color: #7691b4;
+  font-size: 14px;
+}
+
+.repair-warning mat-icon {
+  width: 18px;
+  height: 18px;
+  color: #ffb000;
+  font-size: 18px;
+}
+
+
+/* =========================================================
+   ASSETS BY TYPE
+   ========================================================= */
+
+.assets-type-card {
+  min-height: 300px;
+}
+
+.asset-type-list {
+  padding: 0 16px 13px;
+}
+
+.asset-type-row {
+  margin-bottom: 17px;
+}
+
+
+/* Type info */
+
+.asset-type-info {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  height: 22px;
+  color: #dce7f4;
+  font-size: 14px;
+}
+
+.asset-type-info mat-icon {
+  width: 17px;
+  height: 17px;
+  color: #00d4ff;
+  font-size: 17px;
+}
+
+.asset-type-info strong {
+  margin-left: auto;
+
+  color: #7690b2;
+
+  font-size: 11px;
+
+  font-weight: 500;
+}
+
+
+/* Type progress */
+
+.type-progress {
+  width: calc(100% - 24px);
+
+  margin-left: 24px;
+
+  height: 6px;
+
+  overflow: hidden;
+
+  border-radius: 5px;
+
+  background: #17253a;
+}
+
+.type-progress-fill {
+  height: 100%;
+
+  border-radius: 5px;
+
+  background: #00d4ff;
+
+  box-shadow:
+    0 0 5px rgba(0, 212, 255, 0.15);
+}
+
+
+/* =========================================================
+   RECENT ACTIVITY
+   ========================================================= */
+
+.recent-card {
+  min-height: 190px;
+
+  overflow: hidden;
+}
+
+
+/* Header */
+
+.recent-header {
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #18263b;
+}
+
+/* View all */
+.view-all {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #00d4ff;
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.view-all mat-icon {
+  width: 16px;
+  height: 16px;
+
+  font-size: 16px;
+}
+
+
+/* Activity */
+
+.activity-item {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #18263b;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+
+/* Activity icon */
+
+.activity-icon {
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: rgba(0, 212, 255, 0.06);
+
+  color: #00d4ff;
+}
+
+.activity-icon mat-icon {
+  width: 19px;
+  height: 19px;
+
+  font-size: 19px;
+}
+
+
+/* Activity content */
+
+.activity-content {
+  min-width: 0;
+
+  flex: 1;
+}
+
+.activity-title {
+  display: flex;
+
+  align-items: center;
+
+  gap: 5px;
+
+  color: #7189a9;
+
+  font-size: 10px;
+}
+
+.activity-title strong {
+  color: #f5f7fa;
+
+  font-size: 10px;
+}
+
+.activity-description {
+  margin-top: 4px;
+
+  color: #5f789b;
+
+  font-size: 9px;
+}
+
+
+/* Activity time */
+
+.activity-time {
+  align-self: center;
+
+  color: #4f6889;
+
+  font-size: 9px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .stats-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+@media (max-width: 700px) {
+
+  .sidebar {
+    width: 64px;
+  }
+
+  .brand {
+    justify-content: center;
+
+    padding: 0;
+  }
+
+  .brand-text {
+    display: none;
+  }
+
+  .navigation {
+    padding: 10px 7px;
+  }
+
+  .nav-item {
+    justify-content: center;
+
+    padding: 0;
+  }
+
+  .nav-item span:not(.nav-dot):not(.nav-count) {
+    display: none;
+  }
+
+  .nav-count {
+    position: absolute;
+
+    top: -2px;
+    right: -1px;
+
+    min-width: 15px;
+
+    height: 15px;
+
+    font-size: 7px;
+  }
+
+  .nav-dot {
+    display: none;
+  }
+
+  .sidebar-bottom {
+    display: none;
+  }
+
+  .dashboard-content {
+    margin-left: 64px;
+
+    padding: 18px 14px;
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .activity-time {
+    display: none;
+  }
+
+}

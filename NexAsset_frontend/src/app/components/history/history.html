@@ -1,0 +1,225 @@
+<div class="history-page">
+
+  <!-- =========================================
+       SIDEBAR
+       ========================================= -->
+
+  <app-sidebar></app-sidebar>
+
+
+  <!-- =========================================
+       MAIN CONTENT
+       ========================================= -->
+
+  <main class="history-content">
+
+
+    <!-- =========================================
+         PAGE HEADER
+         ========================================= -->
+
+    <header class="page-header">
+
+      <div>
+
+        <h1>
+          Asset History
+        </h1>
+
+        <p>
+          Complete audit trail of all asset events
+        </p>
+
+      </div>
+
+    </header>
+
+
+    <!-- =========================================
+         FILTER BAR
+         ========================================= -->
+
+    <section class="filter-card">
+
+
+      <!-- SEARCH -->
+
+      <div class="history-search">
+
+        <mat-icon>
+          search
+        </mat-icon>
+
+        <input
+          type="text"
+          [(ngModel)]="searchText"
+          placeholder="Search history..."
+        >
+
+      </div>
+
+
+      <!-- ACTION FILTER -->
+
+      <div class="action-filter">
+
+        <mat-icon class="filter-icon">
+          filter_list
+        </mat-icon>
+
+        <select
+          [(ngModel)]="selectedAction"
+          (change)="onActionChange()">
+
+          <option value="All Actions">
+            All Actions
+          </option>
+
+          <option value="Created">
+            Created
+          </option>
+
+          <option value="Assigned">
+            Assigned
+          </option>
+
+          <option value="Returned">
+            Returned
+          </option>
+
+          <option value="Updated">
+            Updated
+          </option>
+
+          <option value="Repair">
+            Repair
+          </option>
+
+        </select>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         HISTORY TIMELINE
+         ========================================= -->
+
+    <section class="history-list">
+
+
+      <div
+        class="history-item"
+        *ngFor="let event of filteredHistory">
+
+
+        <!-- =====================================
+             TIMELINE
+             ===================================== -->
+
+        <div class="timeline-column">
+
+          <div
+            class="event-icon"
+            [ngClass]="event.iconClass">
+
+            <mat-icon>
+              {{ event.icon }}
+            </mat-icon>
+
+          </div>
+
+        </div>
+
+
+        <!-- =====================================
+             EVENT CONTENT
+             ===================================== -->
+
+        <div class="event-content">
+
+
+          <!-- EVENT TITLE -->
+
+          <div class="event-title">
+
+            <span
+              class="event-action"
+              [ngClass]="event.iconClass">
+
+              {{ event.action }}
+
+            </span>
+
+
+            <mat-icon class="asset-small-icon">
+              inventory_2
+            </mat-icon>
+
+
+            <strong>
+              {{ event.assetName }}
+            </strong>
+
+          </div>
+
+
+          <!-- DESCRIPTION -->
+
+          <p>
+            {{ event.description }}
+          </p>
+
+        </div>
+
+
+        <!-- =====================================
+             DATE / TIME
+             ===================================== -->
+
+        <div class="event-date">
+
+          <strong>
+            {{ event.date }}
+          </strong>
+
+          <span>
+            {{ event.time }}
+          </span>
+
+        </div>
+
+
+      </div>
+
+
+    </section>
+
+
+    <!-- =========================================
+         EMPTY STATE
+         ========================================= -->
+
+    <div
+      class="empty-state"
+      *ngIf="filteredHistory.length === 0">
+
+      <mat-icon>
+        history
+      </mat-icon>
+
+      <h3>
+        No history found
+      </h3>
+
+      <p>
+        Try changing your search or action filter.
+      </p>
+
+    </div>
+
+
+  </main>
+
+</div>

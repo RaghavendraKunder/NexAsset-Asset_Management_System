@@ -1,0 +1,291 @@
+<div class="employees-page">
+
+  <!-- SIDEBAR -->
+  <app-sidebar></app-sidebar>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="employees-content">
+
+
+    <!-- ==========================================
+         HEADER
+         ========================================== -->
+
+    <header class="page-header">
+
+      <div class="page-title-section">
+
+        <h1>Employees</h1>
+
+        <p>
+          Manage employees and view their assigned assets
+        </p>
+
+      </div>
+
+
+      <button
+        class="add-employee-btn"
+        (click)="addEmployee()">
+
+        <mat-icon>add</mat-icon>
+
+        <span>Add Employee</span>
+
+      </button>
+
+    </header>
+
+
+    <!-- ==========================================
+         SEARCH
+         ========================================== -->
+
+    <section class="search-card">
+
+      <div class="search-box">
+
+        <mat-icon>
+          search
+        </mat-icon>
+
+        <input
+          type="text"
+          [(ngModel)]="searchText"
+          placeholder="Search employees..."
+        >
+
+      </div>
+
+    </section>
+
+
+    <!-- ==========================================
+         EMPLOYEE GRID
+         ========================================== -->
+
+    <section class="employees-grid">
+
+
+      <!-- EMPLOYEE CARD -->
+
+      <article
+        class="employee-card"
+        *ngFor="let employee of filteredEmployees">
+
+
+        <!-- TOP -->
+
+        <div class="employee-top">
+
+
+          <!-- AVATAR -->
+
+          <div
+            class="employee-avatar"
+            [ngClass]="employee.avatarClass">
+
+            {{ employee.initials }}
+
+          </div>
+
+
+          <!-- NAME -->
+
+          <div class="employee-heading">
+
+            <h2>
+              {{ employee.name }}
+            </h2>
+
+            <p>
+              {{ employee.jobTitle }}
+            </p>
+
+          </div>
+
+
+        </div>
+
+
+        <!-- DIVIDER -->
+
+        <div class="employee-divider"></div>
+
+
+        <!-- INFORMATION -->
+
+        <div class="employee-info">
+
+
+          <!-- EMAIL -->
+
+          <div class="info-row">
+
+            <mat-icon>
+              mail_outline
+            </mat-icon>
+
+            <span>
+              {{ employee.email }}
+            </span>
+
+          </div>
+
+
+          <!-- DEPARTMENT -->
+
+          <div class="info-row">
+
+            <mat-icon>
+              business
+            </mat-icon>
+
+            <span>
+              {{ employee.department }}
+            </span>
+
+          </div>
+
+
+        </div>
+
+
+        <!-- DIVIDER -->
+
+        <div class="employee-divider"></div>
+
+
+        <!-- ASSIGNED ASSETS -->
+
+        <div class="assigned-section">
+
+
+          <div class="assigned-header">
+
+            <span>
+              Assigned Assets
+            </span>
+
+            <strong>
+              {{ employee.assignedAssets }}
+            </strong>
+
+          </div>
+
+
+          <!-- Assets -->
+
+          <div
+            class="assigned-assets"
+            *ngIf="employee.assets.length > 0">
+
+
+            <div
+              class="assigned-asset"
+              *ngFor="let asset of employee.assets">
+
+              <mat-icon>
+                devices
+              </mat-icon>
+
+              <span>
+                {{ asset }}
+              </span>
+
+            </div>
+
+
+          </div>
+
+
+          <!-- No assets -->
+
+          <div
+            class="no-assets"
+            *ngIf="employee.assets.length === 0">
+
+            No assets assigned
+
+          </div>
+
+
+        </div>
+
+
+        <!-- ACTIONS -->
+
+        <div class="employee-actions">
+
+          <button
+            class="view-btn"
+            (click)="viewEmployee(employee)">
+
+            <mat-icon>
+              visibility
+            </mat-icon>
+
+            View
+
+          </button>
+
+
+          <button
+            class="action-icon"
+            title="Edit"
+            (click)="editEmployee(employee)">
+
+            <mat-icon>
+              edit
+            </mat-icon>
+
+          </button>
+
+
+          <button
+            class="action-icon delete"
+            title="Delete"
+            (click)="deleteEmployee(employee)">
+
+            <mat-icon>
+              delete_outline
+            </mat-icon>
+
+          </button>
+
+        </div>
+
+
+      </article>
+
+
+    </section>
+
+
+    <!-- ==========================================
+         EMPTY STATE
+         ========================================== -->
+
+    <div
+      class="empty-state"
+      *ngIf="filteredEmployees.length === 0">
+
+      <mat-icon>
+        person_search
+      </mat-icon>
+
+      <h3>
+        No employees found
+      </h3>
+
+      <p>
+        Try changing your search.
+      </p>
+
+    </div>
+
+
+  </main>
+
+</div>

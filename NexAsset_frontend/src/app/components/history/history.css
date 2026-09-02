@@ -1,0 +1,796 @@
+/* =========================================================
+   ASSETFLOW
+   HISTORY PAGE
+
+   Midnight Navy + Electric Cyan
+   ========================================================= */
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.history-page {
+
+  min-height: 100vh;
+
+  width: 100%;
+
+  background: #050A14;
+
+  color: #F5F7FA;
+
+  font-family: Arial, sans-serif;
+
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.history-content {
+
+  margin-left: 200px;
+
+  min-height: 100vh;
+
+  padding: 23px 24px;
+
+  box-sizing: border-box;
+
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.page-header {
+
+  margin-bottom: 14px;
+
+}
+
+
+.page-header h1 {
+
+  margin: 0 0 4px;
+
+  color: #F5F7FA;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  line-height: 1.2;
+
+}
+
+
+.page-header p {
+
+  margin: 0;
+
+  color: #6F87A8;
+
+  font-size: 11px;
+
+}
+
+
+/* =========================================================
+   FILTER CARD
+   ========================================================= */
+
+.filter-card {
+
+  width: 100%;
+
+  height: 62px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 10px 12px;
+
+  margin-bottom: 12px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #1B304B;
+
+  border-radius: 9px;
+
+  background: #0D1626;
+
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.history-search {
+
+  position: relative;
+
+  flex: 1;
+
+  height: 34px;
+
+}
+
+
+.history-search mat-icon {
+
+  position: absolute;
+
+  left: 10px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 15px;
+
+  height: 15px;
+
+  color: #55708F;
+
+  font-size: 15px;
+
+  pointer-events: none;
+
+}
+
+
+.history-search input {
+
+  width: 100%;
+
+  height: 100%;
+
+  padding: 0 12px 0 34px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #1D3552;
+
+  border-radius: 6px;
+
+  outline: none;
+
+  background: #081321;
+
+  color: #F5F7FA;
+
+  font-size: 10px;
+
+  font-family: Arial, sans-serif;
+
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease;
+
+}
+
+
+.history-search input::placeholder {
+
+  color: #506985;
+
+}
+
+
+.history-search input:focus {
+
+  border-color: rgba(0, 212, 255, .5);
+
+  box-shadow:
+    0 0 0 2px rgba(0, 212, 255, .04);
+
+}
+
+
+/* =========================================================
+   ACTION FILTER
+   ========================================================= */
+
+.action-filter {
+
+  position: relative;
+
+  width: 185px;
+
+  height: 34px;
+
+}
+
+
+.action-filter select {
+
+  width: 100%;
+
+  height: 100%;
+
+  padding: 0 30px 0 12px;
+
+  border: 1px solid #1D3552;
+
+  border-radius: 6px;
+
+  outline: none;
+
+  background: #081321;
+
+  color: #B9C9DB;
+
+  font-size: 10px;
+
+  font-family: Arial, sans-serif;
+
+  cursor: pointer;
+
+  appearance: auto;
+
+}
+
+
+.action-filter select:hover {
+
+  border-color: rgba(0, 212, 255, .35);
+
+}
+
+
+.action-filter select:focus {
+
+  border-color: rgba(0, 212, 255, .5);
+
+}
+
+
+.action-filter select option {
+
+  background: #0D1626;
+
+  color: #F5F7FA;
+
+}
+
+
+/* =========================================================
+   HISTORY LIST
+   ========================================================= */
+
+.history-list {
+
+  position: relative;
+
+  border: 1px solid #1B304B;
+
+  border-radius: 9px;
+
+  overflow: hidden;
+
+  background: #0D1626;
+
+}
+
+
+/* =========================================================
+   HISTORY ITEM
+   ========================================================= */
+
+.history-item {
+
+  position: relative;
+
+  min-height: 76px;
+
+  display: grid;
+
+  grid-template-columns:
+    48px
+    1fr
+    145px;
+
+  align-items: center;
+
+  padding: 0 13px;
+
+  box-sizing: border-box;
+
+  border-bottom: 1px solid #1B304B;
+
+  transition:
+    background .2s ease,
+    border-color .2s ease;
+
+}
+
+
+.history-item:last-child {
+
+  border-bottom: none;
+
+}
+
+
+.history-item:hover {
+
+  background: #0F1A2B;
+
+}
+
+
+/* =========================================================
+   TIMELINE COLUMN
+   ========================================================= */
+
+.timeline-column {
+
+  position: relative;
+
+  height: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+}
+
+
+/* Vertical timeline */
+
+.timeline-column::after {
+
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+
+  bottom: 0;
+
+  left: 50%;
+
+  width: 1px;
+
+  background: #1C354D;
+
+  transform: translateX(-50%);
+
+  z-index: 0;
+
+}
+
+
+.history-item:first-child
+.timeline-column::after {
+
+  top: 50%;
+
+}
+
+
+.history-item:last-child
+.timeline-column::after {
+
+  bottom: 50%;
+
+}
+
+
+/* =========================================================
+   EVENT ICON
+   ========================================================= */
+
+.event-icon {
+
+  position: relative;
+
+  z-index: 2;
+
+  width: 29px;
+
+  height: 29px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #0D2630;
+
+  border: 1px solid rgba(0, 212, 255, .15);
+
+}
+
+
+.event-icon mat-icon {
+
+  width: 15px;
+
+  height: 15px;
+
+  font-size: 15px;
+
+}
+
+
+/* Created */
+
+.event-icon.created {
+
+  color: #00D4FF;
+
+  background: rgba(0, 212, 255, .08);
+
+  border-color: rgba(0, 212, 255, .18);
+
+}
+
+
+/* Assigned */
+
+.event-icon.assigned {
+
+  color: #4F7CFF;
+
+  background: rgba(79, 124, 255, .08);
+
+  border-color: rgba(79, 124, 255, .18);
+
+}
+
+
+/* Updated */
+
+.event-icon.updated {
+
+  color: #7CA6FF;
+
+  background: rgba(124, 166, 255, .08);
+
+  border-color: rgba(124, 166, 255, .18);
+
+}
+
+
+/* Returned */
+
+.event-icon.returned {
+
+  color: #22D3A5;
+
+  background: rgba(34, 211, 165, .08);
+
+  border-color: rgba(34, 211, 165, .18);
+
+}
+
+
+/* Repair */
+
+.event-icon.repair {
+
+  color: #FFB020;
+
+  background: rgba(255, 176, 32, .08);
+
+  border-color: rgba(255, 176, 32, .18);
+
+}
+
+
+/* =========================================================
+   EVENT CONTENT
+   ========================================================= */
+
+.event-content {
+
+  min-width: 0;
+
+  padding-left: 1px;
+
+}
+
+
+.event-title {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  min-width: 0;
+
+}
+
+
+.event-action {
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+}
+
+
+.event-action.created {
+
+  color: #22D3A5;
+
+}
+
+
+.event-action.assigned {
+
+  color: #4F7CFF;
+
+}
+
+
+.event-action.updated {
+
+  color: #6F9BFF;
+
+}
+
+
+.event-action.returned {
+
+  color: #22D3A5;
+
+}
+
+
+.event-action.repair {
+
+  color: #FFB020;
+
+}
+
+
+.asset-small-icon {
+
+  width: 12px;
+
+  height: 12px;
+
+  color: #607C9C;
+
+  font-size: 12px;
+
+}
+
+
+.event-title strong {
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  color: #E9F1F8;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+}
+
+
+.event-content p {
+
+  margin: 5px 0 0;
+
+  color: #607D9E;
+
+  font-size: 8px;
+
+}
+
+
+/* =========================================================
+   DATE
+   ========================================================= */
+
+.event-date {
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-end;
+
+  gap: 4px;
+
+  padding-right: 3px;
+
+}
+
+
+.event-date strong {
+
+  color: #6885A5;
+
+  font-size: 8px;
+
+  font-weight: 500;
+
+}
+
+
+.event-date span {
+
+  color: #425D7B;
+
+  font-size: 8px;
+
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.empty-state {
+
+  min-height: 240px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  text-align: center;
+
+  border: 1px solid #1B304B;
+
+  border-radius: 9px;
+
+  background: #0D1626;
+
+}
+
+
+.empty-state mat-icon {
+
+  width: 32px;
+
+  height: 32px;
+
+  margin-bottom: 8px;
+
+  color: #31516F;
+
+  font-size: 32px;
+
+}
+
+
+.empty-state h3 {
+
+  margin: 0 0 5px;
+
+  color: #7894B5;
+
+  font-size: 12px;
+
+}
+
+
+.empty-state p {
+
+  margin: 0;
+
+  color: #506985;
+
+  font-size: 9px;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 850px) {
+
+  .history-content {
+
+    margin-left: 64px;
+
+    padding: 20px 16px;
+
+  }
+
+
+  .history-item {
+
+    grid-template-columns:
+      42px
+      1fr
+      110px;
+
+  }
+
+
+  .action-filter {
+
+    width: 150px;
+
+  }
+
+}
+
+
+@media (max-width: 650px) {
+
+  .filter-card {
+
+    height: auto;
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+    padding: 10px;
+
+  }
+
+
+  .history-search {
+
+    width: 100%;
+
+  }
+
+
+  .action-filter {
+
+    width: 100%;
+
+  }
+
+
+  .history-item {
+
+    grid-template-columns:
+      40px
+      1fr;
+
+    padding: 12px;
+
+  }
+
+
+  .event-date {
+
+    grid-column: 2;
+
+    align-items: flex-start;
+
+    margin-top: 5px;
+
+    padding: 0;
+
+  }
+
+}

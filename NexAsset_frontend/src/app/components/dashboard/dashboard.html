@@ -1,0 +1,323 @@
+<div class="dashboard-page">
+  <!-- Sidebar -->
+  <app-sidebar></app-sidebar>
+  <!-- Main Content -->
+  <main class="dashboard-content">
+
+    <!-- ==== TOP STATISTICS ==== -->
+    <section class="stats-grid">
+      <!-- Total Assets -->
+      <div class="stat-card">
+        <div class="stat-info">
+          <span class="stat-label">
+            TOTAL ASSETS
+          </span>
+          <span class="stat-value">
+            16
+          </span>
+        </div>
+        <div class="stat-icon">
+          <mat-icon>inventory_2</mat-icon>
+        </div>
+      </div>
+
+      <!-- Employees -->
+      <div class="stat-card">
+        <div class="stat-info">
+          <span class="stat-label">
+            EMPLOYEES
+          </span>
+          <span class="stat-value">
+            8
+          </span>
+        </div>
+        <div class="stat-icon">
+          <mat-icon>people_outline</mat-icon>
+        </div>
+      </div>
+
+      <!-- Active Assignments -->
+      <div class="stat-card">
+        <div class="stat-info">
+          <span class="stat-label">
+            ACTIVE ASSIGNMENTS
+          </span>
+          <span class="stat-value">
+            8
+          </span>
+        </div>
+        <div class="stat-icon">
+          <mat-icon>sync_alt</mat-icon>
+        </div>
+      </div>
+
+      <!-- Total Value -->
+      <div class="stat-card">
+        <div class="stat-info">
+          <span class="stat-label">
+            TOTAL VALUE
+          </span>
+          <span class="stat-value">
+            $15,916
+          </span>
+        </div>
+        <div class="stat-icon value-icon">
+          <mat-icon>attach_money</mat-icon>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ==== DASHBOARD MIDDLE ==== -->
+    <section class="dashboard-grid">
+      <!-- Status Breakdown -->
+      <div class="dashboard-card status-card">
+        <div class="card-header">
+          <div class="card-title">
+            <mat-icon>trending_up</mat-icon>
+            <span>Status Breakdown</span>
+          </div>
+        </div>
+        <div class="status-list">
+
+            <!-- Available -->
+          <div class="status-row">
+            <div class="status-top">
+              <span>Available</span>
+              <strong>6</strong>
+            </div>
+            <div class="progress-track">
+              <div
+                class="progress-bar available"
+                style="width: 55%">
+              </div>
+            </div>
+          </div>
+
+          <!-- Assigned -->
+          <div class="status-row">
+            <div class="status-top">
+              <span>Assigned</span>
+              <strong>8</strong>
+            </div>
+            <div class="progress-track">
+              <div
+                class="progress-bar assigned"
+                style="width: 70%">
+              </div>
+            </div>
+          </div>
+
+          <!-- Repair -->
+          <div class="status-row">
+            <div class="status-top">
+              <span>Under Repair</span>
+              <strong>2</strong>
+            </div>
+            <div class="progress-track">
+              <div
+                class="progress-bar repair"
+                style="width: 25%">
+              </div>
+            </div>
+          </div>
+
+          <!-- Warning -->
+          <div class="repair-warning">
+            <mat-icon>error_outline</mat-icon>
+            <span>
+              2 asset(s) need repair attention
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Assets By Type -->
+      <div class="dashboard-card assets-type-card">
+        <div class="card-header">
+          <div class="card-title">
+            <mat-icon>category</mat-icon>
+            <span>Assets by Type</span>
+          </div>
+        </div>
+        <div class="asset-type-list">
+
+          <!-- Laptop -->
+          <div class="asset-type-row">
+            <div class="asset-type-info">
+              <mat-icon>laptop</mat-icon>
+              <span>Laptop</span>
+              <strong>3</strong>
+            </div>
+            <div class="type-progress">
+              <div
+                class="type-progress-fill"
+                style="width: 100%">
+              </div>
+            </div>
+          </div>
+
+          <!-- Monitor -->
+          <div class="asset-type-row">
+            <div class="asset-type-info">
+              <mat-icon>desktop_windows</mat-icon>
+              <span>Monitor</span>
+              <strong>3</strong>
+            </div>
+            <div class="type-progress">
+              <div
+                class="type-progress-fill"
+                style="width: 100%">
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile -->
+          <div class="asset-type-row">
+            <div class="asset-type-info">
+              <mat-icon>smartphone</mat-icon>
+              <span>Mobile Device</span>
+              <strong>3</strong>
+            </div>
+            <div class="type-progress">
+              <div
+                class="type-progress-fill"
+                style="width: 100%">
+              </div>
+            </div>
+          </div>
+
+          <!-- Software -->
+          <div class="asset-type-row">
+            <div class="asset-type-info">
+              <mat-icon>description</mat-icon>
+              <span>Software License</span>
+              <strong>3</strong>
+            </div>
+            <div class="type-progress">
+              <div
+                class="type-progress-fill"
+                style="width: 100%">
+              </div>
+            </div>
+          </div>
+
+          <!-- Keyboard -->
+          <div class="asset-type-row">
+            <div class="asset-type-info">
+              <mat-icon>keyboard</mat-icon>
+              <span>Keyboard</span>
+              <strong>2</strong>
+            </div>
+            <div class="type-progress">
+              <div
+                class="type-progress-fill short"
+                style="width: 66%">
+              </div>
+            </div>
+          </div>
+
+          <!-- Mouse -->
+          <div class="asset-type-row">
+            <div class="asset-type-info">
+              <mat-icon>mouse</mat-icon>
+              <span>Mouse</span>
+              <strong>2</strong>
+            </div>
+            <div class="type-progress">
+              <div
+                class="type-progress-fill short"
+                style="width: 66%">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==== RECENT ACTIVITY ==== -->
+    <section class="dashboard-card recent-card">
+      <div class="recent-header">
+        <div class="card-title">
+          <mat-icon>show_chart</mat-icon>
+          <span>Recent Activity</span>
+        </div>
+        <button class="view-all">
+          View all
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </div>
+
+      <!-- Activity -->
+      <div class="activity-list">
+        <div class="activity-item">
+          <div class="activity-icon">
+            <mat-icon>laptop</mat-icon>
+          </div>
+          <div class="activity-content">
+            <div class="activity-title">
+              <strong>
+                MacBook Pro 16" M3
+              </strong>
+              <span>
+                — created
+              </span>
+            </div>
+            <div class="activity-description">
+              Asset added to inventory
+            </div>
+          </div>
+
+
+          <div class="activity-time">
+            49m ago
+          </div>
+
+        </div>
+
+
+        <div class="activity-item">
+
+          <div class="activity-icon">
+
+            <mat-icon>desktop_windows</mat-icon>
+
+          </div>
+
+
+          <div class="activity-content">
+
+            <div class="activity-title">
+
+              <strong>
+                Dell UltraSharp 32" 4K
+              </strong>
+
+              <span>
+                — assigned
+              </span>
+
+            </div>
+
+            <div class="activity-description">
+              Assigned to Marcus Johnson
+            </div>
+
+          </div>
+
+
+          <div class="activity-time">
+            1h ago
+          </div>
+
+        </div>
+
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+</div>

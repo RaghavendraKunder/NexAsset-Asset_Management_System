@@ -1,0 +1,899 @@
+/* =========================================================
+   ASSETFLOW - ASSETS PAGE
+========================================================= */
+
+/* ================PAGE================= */
+.assets-page {
+  min-height: 100vh;
+  width: 100%;
+  background: #050a14;
+  color: #f5f7fa;
+  font-family: Arial, sans-serif;
+}
+
+/* =====================CONTENT============================= */
+.assets-content {
+  margin-left: 225px;
+  min-height: 100vh;
+  padding: 23px 24px;
+  box-sizing: border-box;
+}
+
+/* =====================PAGE HEADER================================ */
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.page-title-section h1 {
+  margin: 0 0 4px;
+  color: #f5f7fa;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+
+.page-title-section p {
+
+  margin: 0;
+
+  color: #6f87a8;
+
+  font-size: 11px;
+
+}
+
+
+/* =========================================================
+   ADD ASSET BUTTON
+   ========================================================= */
+
+.add-asset-btn {
+
+  height: 34px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 0 14px;
+
+  border: none;
+
+  border-radius: 6px;
+
+  background: #00d4ff;
+
+  color: #03101a;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+
+}
+
+
+.add-asset-btn mat-icon {
+
+  width: 16px;
+
+  height: 16px;
+
+  font-size: 16px;
+
+}
+
+
+.add-asset-btn:hover {
+
+  background: #20dcff;
+
+  box-shadow:
+    0 0 18px rgba(0, 212, 255, 0.25);
+
+  transform: translateY(-1px);
+
+}
+
+
+/* =========================================================
+   FILTER CARD
+   ========================================================= */
+
+.filter-card {
+
+  min-height: 62px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 10px 12px;
+
+  margin-bottom: 12px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #1b304b;
+
+  border-radius: 9px;
+
+  background: #0d1626;
+
+}
+
+
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
+.search-box {
+
+  position: relative;
+
+  flex: 1;
+
+  height: 34px;
+
+}
+
+
+.search-box mat-icon {
+
+  position: absolute;
+
+  left: 10px;
+
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  width: 15px;
+
+  height: 15px;
+
+  color: #55708f;
+
+  font-size: 15px;
+
+  pointer-events: none;
+
+}
+
+
+.search-box input {
+
+  width: 100%;
+
+  height: 100%;
+
+  padding: 0 12px 0 34px;
+
+  box-sizing: border-box;
+
+  border: 1px solid #1d3552;
+
+  outline: none;
+
+  border-radius: 6px;
+
+  background: #081321;
+
+  color: #f5f7fa;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 10px;
+
+  transition: border-color 0.2s ease;
+
+}
+
+
+.search-box input::placeholder {
+
+  color: #506985;
+
+}
+
+
+.search-box input:focus {
+
+  border-color: rgba(0, 212, 255, 0.5);
+
+  box-shadow:
+    0 0 0 2px rgba(0, 212, 255, 0.04);
+
+}
+
+
+/* =========================================================
+   SELECT
+   ========================================================= */
+
+.select-box {
+
+  position: relative;
+
+  width: 122px;
+
+  height: 34px;
+
+}
+
+
+.select-box select {
+
+  width: 100%;
+
+  height: 100%;
+
+  appearance: none;
+
+  padding: 0 28px 0 12px;
+
+  border: 1px solid #1d3552;
+
+  outline: none;
+
+  border-radius: 6px;
+
+  background: #081321;
+
+  color: #d6e2f0;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 10px;
+
+  cursor: pointer;
+
+}
+
+
+.select-box mat-icon {
+
+  position: absolute;
+
+  top: 50%;
+
+  right: 8px;
+
+  transform: translateY(-50%);
+
+  width: 14px;
+
+  height: 14px;
+
+  color: #63809f;
+
+  font-size: 14px;
+
+  pointer-events: none;
+
+}
+
+
+.select-box select:focus {
+
+  border-color: rgba(0, 212, 255, 0.5);
+
+}
+
+
+/* =========================================================
+   TABLE
+   ========================================================= */
+
+.assets-table-card {
+
+  width: 100%;
+
+  overflow: hidden;
+
+  border: 1px solid #1b304b;
+
+  border-radius: 9px;
+
+  background: #0d1626;
+
+}
+
+
+/* =========================================================
+   TABLE HEADER
+   ========================================================= */
+
+.table-header {
+
+  min-height: 42px;
+
+  display: grid;
+
+  grid-template-columns:
+    2.15fr
+    1.05fr
+    1.25fr
+    1fr
+    1.45fr
+    1fr
+    .75fr
+    .8fr;
+
+  align-items: center;
+
+  padding: 0 12px;
+
+  box-sizing: border-box;
+
+  border-bottom: 1px solid #1b304b;
+
+  background: #0b1524;
+
+  color: #607c9d;
+
+  font-size: 8px;
+
+  font-weight: 700;
+
+  letter-spacing: .5px;
+
+}
+
+
+/* =========================================================
+   ROW
+   ========================================================= */
+
+.asset-row {
+
+  min-height: 49px;
+
+  display: grid;
+
+  grid-template-columns:
+    2.15fr
+    1.05fr
+    1.25fr
+    1fr
+    1.45fr
+    1fr
+    .75fr
+    .8fr;
+
+  align-items: center;
+
+  padding: 0 12px;
+
+  box-sizing: border-box;
+
+  border-bottom: 1px solid #1b304b;
+
+  transition:
+    background 0.15s ease;
+
+}
+
+
+.asset-row:last-child {
+
+  border-bottom: none;
+
+}
+
+
+.asset-row:hover {
+
+  background: rgba(0, 212, 255, 0.025);
+
+}
+
+
+/* =========================================================
+   ASSET NAME
+   ========================================================= */
+
+.asset-name {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 0;
+
+}
+
+
+.asset-icon {
+
+  width: 23px;
+
+  height: 23px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  color: #00d4ff;
+
+}
+
+
+.asset-icon mat-icon {
+
+  width: 15px;
+
+  height: 15px;
+
+  font-size: 15px;
+
+}
+
+
+.asset-name > span {
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  color: #edf3fa;
+
+  font-size: 10px;
+
+  font-weight: 600;
+
+}
+
+
+/* =========================================================
+   TYPE
+   ========================================================= */
+
+.asset-type {
+
+  color: #7692b6;
+
+  font-size: 9px;
+
+}
+
+
+/* =========================================================
+   SERIAL
+   ========================================================= */
+
+.serial-number {
+
+  color: #6d8bb1;
+
+  font-family: monospace;
+
+  font-size: 9px;
+
+}
+
+
+/* =========================================================
+   STATUS BADGES
+   ========================================================= */
+
+.status-badge {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  min-height: 21px;
+
+  padding: 0 9px;
+
+  border-radius: 12px;
+
+  font-size: 8px;
+
+  font-weight: 600;
+
+}
+
+
+.status-badge.available {
+
+  color: #00d49a;
+
+  border: 1px solid rgba(0, 212, 154, .2);
+
+  background: rgba(0, 212, 154, .08);
+
+}
+
+
+.status-badge.assigned {
+
+  color: #ffb000;
+
+  border: 1px solid rgba(255, 176, 0, .22);
+
+  background: rgba(255, 176, 0, .08);
+
+}
+
+
+.status-badge.repair {
+
+  color: #ff7626;
+
+  border: 1px solid rgba(255, 118, 38, .2);
+
+  background: rgba(255, 118, 38, .08);
+
+}
+
+
+/* =========================================================
+   ASSIGNED USER
+   ========================================================= */
+
+.assigned-user {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  min-width: 0;
+
+}
+
+
+.user-avatar {
+
+  width: 21px;
+
+  height: 21px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background: #00b9df;
+
+  color: #ffffff;
+
+  font-size: 7px;
+
+  font-weight: 700;
+
+}
+
+
+.assigned-user > span:not(.not-assigned) {
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+
+  white-space: nowrap;
+
+  color: #dce7f4;
+
+  font-size: 9px;
+
+}
+
+
+.not-assigned {
+
+  color: #4f6886;
+
+  font-size: 11px;
+
+}
+
+
+/* =========================================================
+   CONDITION
+   ========================================================= */
+
+.condition-badge {
+
+  display: inline-flex;
+
+  align-items: center;
+
+  min-height: 20px;
+
+  padding: 0 8px;
+
+  border-radius: 10px;
+
+  font-size: 8px;
+
+  font-weight: 600;
+
+}
+
+
+.condition-good {
+
+  color: #00cda0;
+
+  background: rgba(0, 205, 160, .08);
+
+  border: 1px solid rgba(0, 205, 160, .18);
+
+}
+
+
+.condition-new {
+
+  color: #00d4b0;
+
+  background: rgba(0, 212, 176, .08);
+
+  border: 1px solid rgba(0, 212, 176, .18);
+
+}
+
+
+.condition-active {
+
+  color: #4f9dff;
+
+  background: rgba(79, 124, 255, .08);
+
+  border: 1px solid rgba(79, 124, 255, .18);
+
+}
+
+
+/* =========================================================
+   VALUE
+   ========================================================= */
+
+.asset-value {
+
+  color: #78a5d7;
+
+  font-size: 9px;
+
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.action-buttons {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: flex-end;
+
+  gap: 4px;
+
+}
+
+
+.icon-btn {
+
+  width: 25px;
+
+  height: 25px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0;
+
+  border: none;
+
+  border-radius: 5px;
+
+  background: transparent;
+
+  color: #6683a4;
+
+  cursor: pointer;
+
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+
+}
+
+
+.icon-btn mat-icon {
+
+  width: 14px;
+
+  height: 14px;
+
+  font-size: 14px;
+
+}
+
+
+.icon-btn:hover {
+
+  background: rgba(0, 212, 255, .07);
+
+  color: #00d4ff;
+
+}
+
+
+.assign-btn:hover {
+
+  color: #4f7cff;
+
+  background: rgba(79, 124, 255, .08);
+
+}
+
+
+.delete-btn:hover {
+
+  color: #ff5d6c;
+
+  background: rgba(255, 93, 108, .08);
+
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.empty-state {
+
+  min-height: 180px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  color: #5d7899;
+
+  font-size: 10px;
+
+}
+
+
+.empty-state mat-icon {
+
+  color: #3d5c7e;
+
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .assets-content {
+
+    padding: 20px 16px;
+
+  }
+
+  .table-header,
+  .asset-row {
+
+    grid-template-columns:
+      2fr
+      1fr
+      1.2fr
+      1fr
+      1.4fr
+      .9fr
+      .7fr
+      .8fr;
+
+  }
+
+}
+
+
+@media (max-width: 850px) {
+
+  .assets-content {
+
+    margin-left: 64px;
+
+  }
+
+  .table-header {
+
+    display: none;
+
+  }
+
+  .asset-row {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+
+    padding: 16px;
+
+  }
+
+}
+
+
+@media (max-width: 600px) {
+
+  .filter-card {
+
+    flex-direction: column;
+
+    align-items: stretch;
+
+  }
+
+  .select-box {
+
+    width: 100%;
+
+  }
+
+  .page-header {
+
+    align-items: flex-start;
+
+    gap: 15px;
+
+  }
+
+  .add-asset-btn {
+
+    flex-shrink: 0;
+
+  }
+
+}

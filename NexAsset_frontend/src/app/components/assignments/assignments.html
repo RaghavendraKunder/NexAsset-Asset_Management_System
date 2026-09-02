@@ -1,0 +1,313 @@
+<div class="assignments-page">
+
+  <!-- SIDEBAR -->
+  <app-sidebar></app-sidebar>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="assignments-content">
+
+
+    <!-- =========================================
+         PAGE HEADER
+         ========================================= -->
+
+    <header class="page-header">
+
+      <div class="page-title-section">
+
+        <h1>
+          Assignments
+        </h1>
+
+        <p>
+          Assign assets to employees and track returns
+        </p>
+
+      </div>
+
+
+      <button
+        class="new-assignment-btn"
+        (click)="newAssignment()">
+
+        <mat-icon>
+          arrow_forward
+        </mat-icon>
+
+        <span>
+          New Assignment
+        </span>
+
+      </button>
+
+    </header>
+
+
+    <!-- =========================================
+         TABS
+         ========================================= -->
+
+    <div class="assignment-tabs">
+
+      <button
+        class="tab-btn"
+        [class.active]="activeTab === 'active'"
+        (click)="setTab('active')">
+
+        Active
+
+        <span class="tab-count">
+          {{ assignments.filter(a => a.status === 'Active').length }}
+        </span>
+
+      </button>
+
+
+      <button
+        class="tab-btn"
+        [class.active]="activeTab === 'returned'"
+        (click)="setTab('returned')">
+
+        Returned
+
+        <span class="tab-count">
+          {{ assignments.filter(a => a.status === 'Returned').length }}
+        </span>
+
+      </button>
+
+    </div>
+
+
+    <!-- =========================================
+         SEARCH
+         ========================================= -->
+
+    <section class="search-card">
+
+      <div class="search-box">
+
+        <mat-icon>
+          search
+        </mat-icon>
+
+        <input
+          type="text"
+          [(ngModel)]="searchText"
+          placeholder="Search by asset or employee..."
+        >
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================================
+         ASSIGNMENT LIST
+         ========================================= -->
+
+    <section class="assignment-list">
+
+
+      <!-- ASSIGNMENT -->
+
+      <article
+        class="assignment-card"
+        *ngFor="let assignment of filteredAssignments">
+
+
+        <!-- =====================================
+             LEFT SIDE
+             ===================================== -->
+
+        <div class="assignment-main">
+
+
+          <!-- Asset Icon -->
+
+          <div class="asset-icon">
+
+            <mat-icon>
+              {{ assignment.icon }}
+            </mat-icon>
+
+          </div>
+
+
+          <!-- Asset Details -->
+
+          <div class="asset-details">
+
+            <h2>
+              {{ assignment.assetName }}
+            </h2>
+
+            <p>
+              {{ assignment.assetType }}
+              <span class="separator">
+                •
+              </span>
+              {{ assignment.serial }}
+            </p>
+
+          </div>
+
+
+        </div>
+
+
+        <!-- =====================================
+             EMPLOYEE
+             ===================================== -->
+
+        <div class="assignment-employee">
+
+
+          <div
+            class="employee-avatar"
+            [ngClass]="assignment.avatarClass">
+
+            {{ assignment.employeeInitials }}
+
+          </div>
+
+
+          <div class="employee-details">
+
+            <strong>
+              {{ assignment.employeeName }}
+            </strong>
+
+            <span>
+              {{ assignment.department }}
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- =====================================
+             DATE
+             ===================================== -->
+
+        <div class="assignment-date">
+
+          <span class="date-label">
+            Assigned
+          </span>
+
+          <strong
+            *ngIf="assignment.status === 'Active'">
+
+            {{ assignment.assignedDate }}
+
+          </strong>
+
+
+          <ng-container
+            *ngIf="assignment.status === 'Returned'">
+
+            <span class="returned-label">
+              Returned
+            </span>
+
+            <strong>
+              {{ assignment.returnDate }}
+            </strong>
+
+          </ng-container>
+
+        </div>
+
+
+        <!-- =====================================
+             ACTION
+             ===================================== -->
+
+        <div class="assignment-action">
+
+
+          <!-- ACTIVE -->
+
+          <button
+            *ngIf="assignment.status === 'Active'"
+            class="return-btn"
+            (click)="returnAssignment(assignment)">
+
+            <mat-icon>
+              keyboard_return
+            </mat-icon>
+
+            <span>
+              Return
+            </span>
+
+          </button>
+
+
+          <!-- RETURNED -->
+
+          <button
+            *ngIf="assignment.status === 'Returned'"
+            class="view-btn"
+            (click)="viewAssignment(assignment)">
+
+            <mat-icon>
+              visibility
+            </mat-icon>
+
+            <span>
+              View
+            </span>
+
+          </button>
+
+
+        </div>
+
+
+        <!-- =====================================
+             NOTES
+             ===================================== -->
+
+        <div class="assignment-notes">
+
+          {{ assignment.notes }}
+
+        </div>
+
+
+      </article>
+
+
+    </section>
+
+
+    <!-- =========================================
+         EMPTY STATE
+         ========================================= -->
+
+    <div
+      class="empty-state"
+      *ngIf="filteredAssignments.length === 0">
+
+      <mat-icon>
+        assignment
+      </mat-icon>
+
+      <h3>
+        No {{ activeTab }} assignments
+      </h3>
+
+      <p>
+        Try changing your search or create a new assignment.
+      </p>
+
+    </div>
+
+
+  </main>
+
+</div>

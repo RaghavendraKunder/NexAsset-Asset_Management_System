@@ -1,0 +1,247 @@
+/* =========================================================
+   ASSETFLOW SIDEBAR
+   Midnight Navy + Electric Cyan
+   ========================================================= */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 215px;
+  display: flex;
+  flex-direction: column;
+  background: #0d1626;
+  border-right: 1px solid #18263b;
+  z-index: 100;
+  box-sizing: border-box;
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.brand {
+  height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #18263b;
+}
+
+
+/* Brand icon */
+
+.brand-icon {
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: 9px;
+  background:
+    linear-gradient(
+      135deg,
+      #00d4ff,
+      #009ec2
+    );
+  color: #ffffff;
+  box-shadow:
+    0 0 15px rgba(0, 212, 255, 0.18);
+}
+
+.brand-icon mat-icon {
+  width: 23px;
+  height: 23px;
+  font-size: 23px;
+}
+
+
+/* Brand text */
+.brand-text {
+  min-width: 0;
+}
+
+.brand-name {
+  color: #f5f7fa;
+  font-family: Arial, sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+.brand-subtitle {
+  color: #6e89ad;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  line-height: 12px;
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.navigation {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 4px;
+
+  padding: 10px 6px;
+}
+
+
+/* Navigation item */
+
+.nav-item {
+  position: relative;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  border-radius: 7px;
+  text-decoration: none;
+  color: #7188a8;
+  font-family: Arial, sans-serif;
+  font-size: 15px;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+/* Icons */
+.nav-item mat-icon {
+  width: 20px;
+  height: 23px;
+
+  flex-shrink: 0;
+
+  font-size: 22px;
+}
+
+
+/* Hover */
+
+.nav-item:hover {
+  color: #d7e4f5;
+
+  background: rgba(0, 212, 255, 0.045);
+}
+
+
+/* Active */
+
+.nav-item.active {
+  color: #00d4ff;
+
+  background:
+    rgba(0, 212, 255, 0.10);
+}
+
+.nav-item.active mat-icon {
+  color: #00d4ff;
+}
+
+
+/* Active right dot */
+
+.nav-dot {
+  width: 5px;
+  height: 5px;
+
+  margin-left: auto;
+
+  border-radius: 50%;
+
+  background: transparent;
+}
+
+.nav-item.active .nav-dot {
+  background: #00d4ff;
+
+  box-shadow:
+    0 0 7px rgba(0, 212, 255, 0.8);
+}
+
+
+/* Count */
+
+.nav-count {
+  min-width: 20px;
+
+  height: 18px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  margin-left: auto;
+
+  padding: 0 5px;
+
+  box-sizing: border-box;
+
+  border-radius: 10px;
+
+  background: #16243a;
+
+  color: #6f91bb;
+
+  font-size: 9px;
+}
+
+.nav-item.active .nav-count {
+  color: #00d4ff;
+
+  background: rgba(0, 212, 255, 0.08);
+}
+
+
+/* =========================================================
+   SIDEBAR BOTTOM
+   ========================================================= */
+
+.sidebar-bottom {
+  margin-top: auto;
+
+  padding: 12px;
+
+  border-top: 1px solid #18263b;
+}
+
+
+.system-status {
+  display: flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: #617795;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 9px;
+}
+
+
+.status-indicator {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #00d4ff;
+
+  box-shadow:
+    0 0 7px rgba(0, 212, 255, 0.8);
+}

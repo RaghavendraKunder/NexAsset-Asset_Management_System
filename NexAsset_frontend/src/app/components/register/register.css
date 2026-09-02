@@ -1,0 +1,727 @@
+/* =========================================================
+   ASSETFLOW REGISTER PAGE
+   Royal Black + Purple + Platinum
+   ========================================================= */
+
+
+/* =========================================================
+   MAIN PAGE
+   ========================================================= */
+
+.register-page {
+  min-height: 100vh;
+  width: 100%;
+
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+
+  overflow: hidden;
+
+  background: #0b0b10;
+
+  color: #d1d5db;
+}
+
+
+/* =========================================================
+   BACKGROUND PURPLE GLOWS
+   ========================================================= */
+
+.register-background {
+  position: absolute;
+
+  inset: 0;
+
+  background:
+    /* LEFT PURPLE CIRCLE */
+    radial-gradient(
+      circle 250px at 15% 68%,
+      rgba(124, 58, 237, 0.10) 0%,
+      rgba(124, 58, 237, 0.055) 35%,
+      rgba(124, 58, 237, 0.025) 55%,
+      transparent 78%
+    ),
+
+    /* RIGHT PURPLE CIRCLE */
+    radial-gradient(
+      circle 270px at 85% 38%,
+      rgba(124, 58, 237, 0.10) 0%,
+      rgba(124, 58, 237, 0.055) 35%,
+      rgba(124, 58, 237, 0.025) 55%,
+      transparent 78%
+    );
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+
+/* =========================================================
+   MAIN CONTAINER
+   ========================================================= */
+
+.register-container {
+  position: relative;
+
+  z-index: 2;
+
+  width: 520px;
+
+  padding-bottom: 25px;
+
+  margin-top:50px;
+}
+
+/* =========================================================
+   CROWN DECORATION
+========================================================= */
+
+.brand-decoration {
+  height: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+.brand-decoration span {
+  width: 210px;
+  height: 1px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(124, 58, 237, 0.38)
+    );
+}
+.brand-decoration span:last-child {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(124, 58, 237, 0.38),
+      transparent
+    );
+}
+
+.brand-decoration mat-icon {
+  width: 16px;
+  height: 16px;
+  font-size: 15px;
+  line-height: 16px;
+  color: #a855f7;
+  filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.45));
+}
+
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.register-heading {
+  margin-bottom: 24px;
+}
+
+.register-heading h1 {
+  margin: 0;
+
+  color: #d1d5db;
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 38px;
+
+  font-weight: 500;
+
+  line-height: 1.1;
+
+  letter-spacing: -0.5px;
+}
+
+.register-heading p {
+  margin: 7px 0 0;
+
+  color: #858397;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 12px;
+
+  line-height: 17px;
+}
+
+
+/* =========================================================
+   REGISTER CARD
+   ========================================================= */
+
+.register-card {
+  width: 520px;
+
+  padding: 28px 28px 25px;
+
+  box-sizing: border-box;
+
+  border-radius: 15px;
+
+  background: #171720;
+
+  border: 1px solid rgba(124, 58, 237, 0.45);
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.45),
+    0 0 35px rgba(124, 58, 237, 0.06);
+
+  overflow: hidden;
+}
+
+
+/* =========================================================
+   AUTH TABS
+   ========================================================= */
+
+.auth-tabs {
+  width: 100%;
+
+  height: 44px;
+
+  display: flex;
+
+  padding: 2px;
+
+  box-sizing: border-box;
+
+  border-radius: 14px;
+
+  background: #0e0d14;
+
+  margin-bottom: 25px;
+}
+
+.auth-tab {
+  flex: 1;
+
+  height: 40px;
+
+  border: 0;
+
+  border-radius: 11px;
+
+  background: transparent;
+
+  color: #858294;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.2px;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.auth-tab.active {
+  color: #c9a7e8;
+
+  background: linear-gradient(
+    180deg,
+    #472477,
+    #35175c
+  );
+
+  box-shadow:
+    0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.auth-tab:hover {
+  color: #d1d5db;
+}
+
+
+/* =========================================================
+   FIRST NAME / LAST NAME
+   ========================================================= */
+
+.name-row {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 12px;
+
+  width: 100%;
+}
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.form-group > label {
+  display: block;
+
+  margin: 0 0 8px;
+
+  color: #9794a7;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  line-height: 12px;
+
+  letter-spacing: 1.4px;
+}
+
+
+/* =========================================================
+   INPUT WRAPPER
+   ========================================================= */
+
+.input-wrapper {
+  position: relative;
+
+  width: 100%;
+
+  height: 46px;
+
+  display: flex;
+
+  align-items: center;
+
+  box-sizing: border-box;
+
+  border: 1px solid rgba(124, 58, 237, 0.38);
+
+  border-radius: 14px;
+
+  background: #211d30;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+/* Input focus */
+
+.input-wrapper:focus-within {
+  border-color: #7c3aed;
+
+  background: #231e33;
+
+  box-shadow:
+    0 0 0 1px rgba(124, 58, 237, 0.12),
+    0 0 15px rgba(124, 58, 237, 0.08);
+}
+
+
+/* =========================================================
+   INPUT ICON
+   ========================================================= */
+
+.input-icon {
+  flex-shrink: 0;
+
+  width: 17px;
+  height: 17px;
+
+  margin-left: 14px;
+  margin-right: 10px;
+
+  font-size: 17px;
+
+  color: #898498;
+}
+
+
+/* =========================================================
+   INPUT FIELD
+   ========================================================= */
+
+.input-wrapper input {
+  flex: 1;
+
+  min-width: 0;
+
+  height: 100%;
+
+  border: 0;
+
+  outline: 0;
+
+  padding: 0;
+
+  background: transparent;
+
+  color: #d1d5db;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 13px;
+}
+
+.input-wrapper input::placeholder {
+  color: #777386;
+
+  opacity: 1;
+}
+
+
+/* =========================================================
+   PASSWORD TOGGLE
+   ========================================================= */
+
+.password-toggle {
+  width: 40px;
+
+  height: 44px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #777386;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.password-toggle mat-icon {
+  width: 17px;
+  height: 17px;
+
+  font-size: 17px;
+}
+
+.password-toggle:hover {
+  color: #a855f7;
+}
+
+
+/* =========================================================
+   SECURITY INFORMATION
+   ========================================================= */
+
+.security-info {
+  display: flex;
+
+  align-items: center;
+
+  gap: 22px;
+
+  margin-top: 0;
+
+  margin-bottom: 20px;
+}
+
+.security-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  color: #8d899c;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 10px;
+}
+
+.security-item mat-icon {
+  width: 14px;
+  height: 14px;
+
+  font-size: 14px;
+
+  color: #a855f7;
+}
+
+
+/* =========================================================
+   CREATE ACCOUNT BUTTON
+   ========================================================= */
+
+.create-account-button {
+  width: 100%;
+
+  height: 50px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 9px;
+
+  border: 1px solid #a855f7;
+
+  border-radius: 14px;
+
+  background:
+    linear-gradient(
+      105deg,
+      #7c3aed 0%,
+      #9333ea 45%,
+      #a855f7 100%
+    );
+
+  color: #ffffff;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 700;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 0 12px rgba(124, 58, 237, 0.35),
+    0 0 25px rgba(168, 85, 247, 0.22),
+    0 8px 25px rgba(0, 0, 0, 0.35);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+
+/* Button arrow */
+
+.create-account-button mat-icon {
+  width: 17px;
+  height: 17px;
+
+  font-size: 17px;
+}
+
+
+/* Button hover */
+
+.create-account-button:hover {
+  transform: translateY(-1px);
+
+  filter: brightness(1.08);
+
+  box-shadow:
+    0 0 18px rgba(124, 58, 237, 0.55),
+    0 0 38px rgba(168, 85, 247, 0.35),
+    0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+
+/* Button click */
+
+.create-account-button:active {
+  transform: translateY(1px);
+
+  box-shadow:
+    0 0 10px rgba(124, 58, 237, 0.4);
+}
+
+
+/* =========================================================
+   TERMS & PRIVACY
+   ========================================================= */
+
+.terms-text {
+  margin: 15px 0 0;
+
+  text-align: center;
+
+  color: #858294;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 9px;
+
+  line-height: 14px;
+}
+
+.terms-link {
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #a855f7;
+
+  font-family: inherit;
+
+  font-size: inherit;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.terms-link:hover {
+  color: #c084fc;
+}
+
+
+/* =========================================================
+   ALREADY MEMBER
+   ========================================================= */
+
+.already-member {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 4px;
+
+  margin-top: 20px;
+
+  color: #777386;
+
+  font-family: Arial, sans-serif;
+
+  font-size: 12px;
+}
+
+.already-member button {
+  padding: 0;
+
+  border: 0;
+
+  background: transparent;
+
+  color: #a855f7;
+
+  font-family: inherit;
+
+  font-size: inherit;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.already-member button:hover {
+  color: #c084fc;
+}
+
+
+/* =========================================================
+   FORM VALIDATION
+   ========================================================= */
+
+.input-wrapper.ng-invalid.ng-touched {
+  border-color: rgba(239, 68, 68, 0.65);
+}
+
+.input-wrapper.ng-valid.ng-touched {
+  border-color: rgba(124, 58, 237, 0.45);
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 560px) {
+
+  .register-container {
+    width: calc(100% - 30px);
+  }
+
+  .register-card {
+    width: 100%;
+
+    padding: 24px 20px 22px;
+  }
+
+  .register-heading h1 {
+    font-size: 34px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .name-row {
+    grid-template-columns: 1fr;
+
+    gap: 0;
+  }
+
+  .register-heading h1 {
+    font-size: 31px;
+  }
+
+  .security-info {
+    gap: 12px;
+  }
+
+  .security-item {
+    font-size: 9px;
+  }
+
+
+  ::ng-deep .notification-success {
+  --mdc-snackbar-container-color: #16a34a;
+  --mdc-snackbar-supporting-text-color: #ffffff;
+  --mat-snack-bar-button-color: #ffffff;
+}
+
+::ng-deep .notification-error {
+  --mdc-snackbar-container-color: #dc2626;
+  --mdc-snackbar-supporting-text-color: #ffffff;
+  --mat-snack-bar-button-color: #ffffff;
+}
+
+::ng-deep .notification-warning {
+  --mdc-snackbar-container-color: #d97706;
+  --mdc-snackbar-supporting-text-color: #ffffff;
+  --mat-snack-bar-button-color: #ffffff;
+}
+}

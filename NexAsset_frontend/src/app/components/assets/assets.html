@@ -1,0 +1,376 @@
+<div class="assets-page">
+
+  <!-- SIDEBAR -->
+  <app-sidebar></app-sidebar>
+
+
+  <!-- MAIN CONTENT -->
+  <main class="assets-content">
+
+
+    <!-- ================================================
+         PAGE HEADER
+         ================================================ -->
+
+    <header class="page-header">
+
+      <div class="page-title-section">
+
+        <h1>Assets</h1>
+
+        <p>
+          Manage your company's hardware and software assets
+        </p>
+
+      </div>
+
+
+      <button
+        class="add-asset-btn"
+        (click)="addAsset()">
+
+        <mat-icon>add</mat-icon>
+
+        <span>Add Asset</span>
+
+      </button>
+
+    </header>
+
+
+    <!-- ================================================
+         FILTER BAR
+         ================================================ -->
+
+    <section class="filter-card">
+
+      <!-- Search -->
+
+      <div class="search-box">
+
+        <mat-icon>search</mat-icon>
+
+        <input
+          type="text"
+          placeholder="Search by name or serial number..."
+          [(ngModel)]="searchText">
+
+      </div>
+
+
+      <!-- Type -->
+
+      <div class="select-box">
+
+        <select [(ngModel)]="selectedType">
+
+          <option value="all">
+            All Types
+          </option>
+
+          <option value="Laptop">
+            Laptop
+          </option>
+
+          <option value="Monitor">
+            Monitor
+          </option>
+
+          <option value="Mobile Device">
+            Mobile Device
+          </option>
+
+          <option value="Software License">
+            Software License
+          </option>
+
+          <option value="Keyboard">
+            Keyboard
+          </option>
+
+          <option value="Mouse">
+            Mouse
+          </option>
+
+        </select>
+
+        <mat-icon>expand_more</mat-icon>
+
+      </div>
+
+
+      <!-- Status -->
+
+      <div class="select-box status-select">
+
+        <select [(ngModel)]="selectedStatus">
+
+          <option value="all">
+            All Statuses
+          </option>
+
+          <option value="Available">
+            Available
+          </option>
+
+          <option value="Assigned">
+            Assigned
+          </option>
+
+          <option value="Under Repair">
+            Under Repair
+          </option>
+
+        </select>
+
+        <mat-icon>expand_more</mat-icon>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================================================
+         ASSETS TABLE
+         ================================================ -->
+
+    <section class="assets-table-card">
+
+
+      <!-- Table Header -->
+
+      <div class="table-header">
+
+        <div class="col-asset">
+          ASSET
+        </div>
+
+        <div class="col-type">
+          TYPE
+        </div>
+
+        <div class="col-serial">
+          SERIAL
+        </div>
+
+        <div class="col-status">
+          STATUS
+        </div>
+
+        <div class="col-assigned">
+          ASSIGNED TO
+        </div>
+
+        <div class="col-condition">
+          CONDITION
+        </div>
+
+        <div class="col-value">
+          VALUE
+        </div>
+
+        <div class="col-actions">
+          ACTIONS
+        </div>
+
+      </div>
+
+
+      <!-- Table Rows -->
+
+      <div
+        class="asset-row"
+        *ngFor="let asset of filteredAssets">
+
+
+        <!-- Asset -->
+
+        <div class="col-asset asset-name">
+
+          <div class="asset-icon">
+
+            <mat-icon>
+              {{ asset.icon }}
+            </mat-icon>
+
+          </div>
+
+          <span>
+            {{ asset.name }}
+          </span>
+
+        </div>
+
+
+        <!-- Type -->
+
+        <div class="col-type asset-type">
+
+          {{ asset.type }}
+
+        </div>
+
+
+        <!-- Serial -->
+
+        <div class="col-serial serial-number">
+
+          {{ asset.serial }}
+
+        </div>
+
+
+        <!-- Status -->
+
+        <div class="col-status">
+
+          <span
+            class="status-badge"
+            [ngClass]="{
+              'available': asset.status === 'Available',
+              'assigned': asset.status === 'Assigned',
+              'repair': asset.status === 'Under Repair'
+            }">
+
+            {{ asset.status }}
+
+          </span>
+
+        </div>
+
+
+        <!-- Assigned -->
+
+        <div class="col-assigned assigned-user">
+
+          <ng-container
+            *ngIf="asset.assignedTo !== '—'; else notAssigned">
+
+            <div class="user-avatar">
+
+              {{ asset.initials }}
+
+            </div>
+
+            <span>
+              {{ asset.assignedTo }}
+            </span>
+
+          </ng-container>
+
+
+          <ng-template #notAssigned>
+
+            <span class="not-assigned">
+              —
+            </span>
+
+          </ng-template>
+
+        </div>
+
+
+        <!-- Condition -->
+
+        <div class="col-condition">
+
+          <span
+            class="condition-badge"
+            [ngClass]="{
+              'condition-good': asset.condition === 'Good',
+              'condition-new': asset.condition === 'New',
+              'condition-active': asset.condition === 'Active'
+            }">
+
+            {{ asset.condition }}
+
+          </span>
+
+        </div>
+
+
+        <!-- Value -->
+
+        <div class="col-value asset-value">
+
+          ${{ asset.value | number }}
+
+        </div>
+
+
+        <!-- Actions -->
+
+        <div class="col-actions action-buttons">
+
+
+          <!-- Assign -->
+
+          <button
+            *ngIf="asset.status === 'Available'"
+            class="icon-btn assign-btn"
+            title="Assign"
+            (click)="assignAsset(asset)">
+
+            <mat-icon>
+              sync_alt
+            </mat-icon>
+
+          </button>
+
+
+          <!-- Edit -->
+
+          <button
+            class="icon-btn"
+            title="Edit"
+            (click)="editAsset(asset)">
+
+            <mat-icon>
+              edit
+            </mat-icon>
+
+          </button>
+
+
+          <!-- Delete -->
+
+          <button
+            class="icon-btn delete-btn"
+            title="Delete"
+            (click)="deleteAsset(asset)">
+
+            <mat-icon>
+              delete_outline
+            </mat-icon>
+
+          </button>
+
+
+        </div>
+
+      </div>
+
+
+      <!-- Empty -->
+
+      <div
+        class="empty-state"
+        *ngIf="filteredAssets.length === 0">
+
+        <mat-icon>
+          search_off
+        </mat-icon>
+
+        <span>
+          No assets found
+        </span>
+
+      </div>
+
+
+    </section>
+
+
+  </main>
+
+</div>

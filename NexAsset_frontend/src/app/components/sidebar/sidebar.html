@@ -1,0 +1,105 @@
+<aside class="sidebar">
+
+  <!-- Brand -->
+  <div class="brand">
+
+    <div class="brand-icon">
+      <mat-icon>account_tree</mat-icon>
+    </div>
+
+    <div class="brand-text">
+      <div class="brand-name">NexAsset</div>
+      <div class="brand-subtitle">Management System</div>
+    </div>
+
+  </div>
+
+
+  <!-- Navigation -->
+  <nav class="navigation">
+
+    <a
+      routerLink="/dashboard"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      class="nav-item">
+
+      <mat-icon>dashboard</mat-icon>
+
+      <span>Dashboard</span>
+
+      <span class="nav-dot"></span>
+
+    </a>
+
+
+    <a
+      routerLink="/assets"
+      routerLinkActive="active"
+      class="nav-item">
+
+      <mat-icon>inventory_2</mat-icon>
+
+      <span>Assets</span>
+
+      <span class="nav-count">16</span>
+
+    </a>
+
+
+    <a
+      routerLink="/employees"
+      routerLinkActive="active"
+      class="nav-item">
+
+      <mat-icon>people_outline</mat-icon>
+
+      <span>Employees</span>
+
+      <span class="nav-count">8</span>
+
+    </a>
+
+
+    <a
+      routerLink="/assignments"
+      routerLinkActive="active"
+      class="nav-item">
+
+      <mat-icon>sync_alt</mat-icon>
+
+      <span>Assignments</span>
+
+      <span class="nav-count">8</span>
+
+    </a>
+
+
+    <a
+      routerLink="/history"
+      routerLinkActive="active"
+      class="nav-item">
+
+      <mat-icon>history</mat-icon>
+
+      <span>History</span>
+
+    </a>
+
+  </nav>
+
+
+  <!-- Bottom area -->
+  <div class="sidebar-bottom">
+
+    <div class="system-status">
+
+      <span class="status-indicator"></span>
+
+      <span>System Online</span>
+
+    </div>
+
+  </div>
+
+</aside>
