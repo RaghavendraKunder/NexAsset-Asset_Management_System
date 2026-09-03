@@ -1,5 +1,9 @@
 package com.NexAsset.NexAsset_backend.exception;
 
-public class DuplicateResourceException {
+@SuppressWarnings("serial")
+public class DuplicateResourceException extends RuntimeException {
 
+    public DuplicateResourceException(String message) {
+        super(message);
+    }
 }

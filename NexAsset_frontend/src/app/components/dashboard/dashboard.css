@@ -447,17 +447,17 @@
 
   align-items: center;
 
-  gap: 5px;
+  gap: 6px;
 
   color: #7189a9;
 
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .activity-title strong {
   color: #f5f7fa;
 
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .activity-description {
@@ -465,7 +465,7 @@
 
   color: #5f789b;
 
-  font-size: 9px;
+  font-size: 12px;
 }
 
 
@@ -476,7 +476,7 @@
 
   color: #4f6889;
 
-  font-size: 9px;
+  font-size: 11px;
 }
 
 

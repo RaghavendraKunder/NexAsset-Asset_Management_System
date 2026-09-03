@@ -1,5 +1,9 @@
 package com.NexAsset.NexAsset_backend.exception;
 
-public class InvalidAssignmentException {
+@SuppressWarnings("serial")
+public class InvalidAssignmentException extends RuntimeException {
 
+    public InvalidAssignmentException(String message) {
+        super(message);
+    }
 }
