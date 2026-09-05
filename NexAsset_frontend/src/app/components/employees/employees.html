@@ -1,22 +1,26 @@
 <div class="employees-page">
 
-  <!-- SIDEBAR -->
+  <!-- =========================================================
+       SIDEBAR
+  ========================================================== -->
+
   <app-sidebar></app-sidebar>
 
 
-  <!-- MAIN CONTENT -->
+  <!-- =========================================================
+       MAIN CONTENT
+  ========================================================== -->
+
   <main class="employees-content">
 
-
-    <!-- ==========================================
-         HEADER
-         ========================================== -->
-
+    <!-- HEADER -->
     <header class="page-header">
 
       <div class="page-title-section">
 
-        <h1>Employees</h1>
+        <h1>
+          Employees
+        </h1>
 
         <p>
           Manage employees and view their assigned assets
@@ -24,23 +28,26 @@
 
       </div>
 
-
       <button
         class="add-employee-btn"
         (click)="addEmployee()">
 
-        <mat-icon>add</mat-icon>
+        <mat-icon>
+          add
+        </mat-icon>
 
-        <span>Add Employee</span>
+        <span>
+          Add Employee
+        </span>
 
       </button>
 
     </header>
 
 
-    <!-- ==========================================
+    <!-- =========================================================
          SEARCH
-         ========================================== -->
+    ========================================================== -->
 
     <section class="search-card">
 
@@ -61,12 +68,11 @@
     </section>
 
 
-    <!-- ==========================================
+    <!-- =========================================================
          EMPLOYEE GRID
-         ========================================== -->
+    ========================================================== -->
 
     <section class="employees-grid">
-
 
       <!-- EMPLOYEE CARD -->
 
@@ -74,11 +80,9 @@
         class="employee-card"
         *ngFor="let employee of filteredEmployees">
 
-
-        <!-- TOP -->
+        <!-- EMPLOYEE TOP -->
 
         <div class="employee-top">
-
 
           <!-- AVATAR -->
 
@@ -91,7 +95,7 @@
           </div>
 
 
-          <!-- NAME -->
+          <!-- NAME + JOB TITLE -->
 
           <div class="employee-heading">
 
@@ -105,7 +109,6 @@
 
           </div>
 
-
         </div>
 
 
@@ -114,10 +117,11 @@
         <div class="employee-divider"></div>
 
 
-        <!-- INFORMATION -->
+        <!-- =====================================================
+             EMPLOYEE INFORMATION
+        ====================================================== -->
 
         <div class="employee-info">
-
 
           <!-- EMAIL -->
 
@@ -148,7 +152,6 @@
 
           </div>
 
-
         </div>
 
 
@@ -157,10 +160,11 @@
         <div class="employee-divider"></div>
 
 
-        <!-- ASSIGNED ASSETS -->
+        <!-- =====================================================
+             ASSIGNED ASSETS
+        ====================================================== -->
 
         <div class="assigned-section">
-
 
           <div class="assigned-header">
 
@@ -175,12 +179,11 @@
           </div>
 
 
-          <!-- Assets -->
+          <!-- ASSETS -->
 
           <div
             class="assigned-assets"
             *ngIf="employee.assets.length > 0">
-
 
             <div
               class="assigned-asset"
@@ -196,11 +199,10 @@
 
             </div>
 
-
           </div>
 
 
-          <!-- No assets -->
+          <!-- NO ASSETS -->
 
           <div
             class="no-assets"
@@ -210,13 +212,16 @@
 
           </div>
 
-
         </div>
 
 
-        <!-- ACTIONS -->
+        <!-- =====================================================
+             ACTIONS
+        ====================================================== -->
 
         <div class="employee-actions">
+
+          <!-- VIEW -->
 
           <button
             class="view-btn"
@@ -231,6 +236,8 @@
           </button>
 
 
+          <!-- EDIT -->
+
           <button
             class="action-icon"
             title="Edit"
@@ -242,6 +249,8 @@
 
           </button>
 
+
+          <!-- DELETE -->
 
           <button
             class="action-icon delete"
@@ -256,16 +265,14 @@
 
         </div>
 
-
       </article>
-
 
     </section>
 
 
-    <!-- ==========================================
+    <!-- =========================================================
          EMPTY STATE
-         ========================================== -->
+    ========================================================== -->
 
     <div
       class="empty-state"
@@ -285,7 +292,660 @@
 
     </div>
 
-
   </main>
+
+</div>
+
+
+
+<!-- =============================================================
+     ADD EMPLOYEE MODAL
+============================================================== -->
+
+<div
+  class="employee-modal-overlay"
+  *ngIf="showAddEmployeeModal"
+  (click)="closeAddEmployeeModal()">
+
+  <div
+    class="employee-modal"
+    (click)="$event.stopPropagation()">
+
+
+    <!-- MODAL HEADER -->
+
+    <div class="employee-modal-header">
+
+      <h2>
+        Add Employee
+      </h2>
+
+      <button
+        type="button"
+        class="employee-modal-close"
+        aria-label="Close"
+        (click)="closeAddEmployeeModal()">
+
+        <mat-icon>
+          close
+        </mat-icon>
+
+      </button>
+
+    </div>
+
+
+    <!-- =========================================================
+         ADD EMPLOYEE FORM
+    ========================================================== -->
+
+    <form
+      class="employee-modal-form"
+      (ngSubmit)="submitAddEmployee()">
+
+
+      <!-- FULL NAME -->
+
+      <div class="employee-form-group full-width">
+
+        <label for="employeeFullName">
+          FULL NAME *
+        </label>
+
+        <div class="employee-input-wrapper">
+
+          <mat-icon>
+            person_outline
+          </mat-icon>
+
+          <input
+            id="employeeFullName"
+            type="text"
+            name="fullName"
+            [(ngModel)]="employeeForm.name"
+            placeholder="John Doe"
+            required
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- EMAIL -->
+
+      <div class="employee-form-group full-width">
+
+        <label for="employeeEmail">
+          EMAIL *
+        </label>
+
+        <div class="employee-input-wrapper">
+
+          <mat-icon>
+            mail_outline
+          </mat-icon>
+
+          <input
+            id="employeeEmail"
+            type="email"
+            name="email"
+            [(ngModel)]="employeeForm.email"
+            placeholder="john@company.com"
+            required
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- DEPARTMENT + JOB TITLE -->
+
+      <div class="employee-form-row">
+
+
+        <!-- DEPARTMENT -->
+
+        <div class="employee-form-group">
+
+          <label for="employeeDepartment">
+            DEPARTMENT
+          </label>
+
+          <div class="employee-input-wrapper">
+
+            <mat-icon>
+              business
+            </mat-icon>
+
+            <input
+              id="employeeDepartment"
+              type="text"
+              name="department"
+              [(ngModel)]="employeeForm.department"
+              placeholder="Engineering"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- JOB TITLE -->
+
+        <div class="employee-form-group">
+
+          <label for="employeeJobTitle">
+            JOB TITLE
+          </label>
+
+          <div class="employee-input-wrapper">
+
+            <mat-icon>
+              work_outline
+            </mat-icon>
+
+            <input
+              id="employeeJobTitle"
+              type="text"
+              name="jobTitle"
+              [(ngModel)]="employeeForm.jobTitle"
+              placeholder="Software Engineer"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =======================================================
+           ADD MODAL FOOTER
+      ======================================================== -->
+
+      <div class="employee-modal-footer">
+
+        <button
+          type="button"
+          class="employee-modal-cancel"
+          (click)="closeAddEmployeeModal()">
+
+          Cancel
+
+        </button>
+
+
+        <button
+          type="submit"
+          class="employee-modal-add">
+
+          <mat-icon>
+            person_add
+          </mat-icon>
+
+          Add Employee
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+
+<!-- =============================================================
+     EDIT EMPLOYEE MODAL
+============================================================== -->
+
+<div
+  class="employee-modal-overlay"
+  *ngIf="showEditEmployeeModal"
+  (click)="closeEditEmployeeModal()">
+
+  <div
+    class="employee-modal"
+    (click)="$event.stopPropagation()">
+
+
+    <!-- MODAL HEADER -->
+
+    <div class="employee-modal-header">
+
+      <h2>
+        Edit Employee
+      </h2>
+
+      <button
+        type="button"
+        class="employee-modal-close"
+        aria-label="Close"
+        (click)="closeEditEmployeeModal()">
+
+        <mat-icon>
+          close
+        </mat-icon>
+
+      </button>
+
+    </div>
+
+
+    <!-- =========================================================
+         EDIT EMPLOYEE FORM
+    ========================================================== -->
+
+    <form
+      class="employee-modal-form"
+      (ngSubmit)="submitEditEmployee()">
+
+
+      <!-- FULL NAME -->
+
+      <div class="employee-form-group full-width">
+
+        <label for="editEmployeeFullName">
+          FULL NAME *
+        </label>
+
+        <div class="employee-input-wrapper">
+
+          <mat-icon>
+            person_outline
+          </mat-icon>
+
+          <input
+            id="editEmployeeFullName"
+            type="text"
+            name="editFullName"
+            [(ngModel)]="employeeForm.name"
+            placeholder="John Doe"
+            required
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- EMAIL -->
+
+      <div class="employee-form-group full-width">
+
+        <label for="editEmployeeEmail">
+          EMAIL *
+        </label>
+
+        <div class="employee-input-wrapper">
+
+          <mat-icon>
+            mail_outline
+          </mat-icon>
+
+          <input
+            id="editEmployeeEmail"
+            type="email"
+            name="editEmail"
+            [(ngModel)]="employeeForm.email"
+            placeholder="john@company.com"
+            required
+          >
+
+        </div>
+
+      </div>
+
+
+      <!-- DEPARTMENT + JOB TITLE -->
+
+      <div class="employee-form-row">
+
+
+        <!-- DEPARTMENT -->
+
+        <div class="employee-form-group">
+
+          <label for="editEmployeeDepartment">
+            DEPARTMENT
+          </label>
+
+          <div class="employee-input-wrapper">
+
+            <mat-icon>
+              business
+            </mat-icon>
+
+            <input
+              id="editEmployeeDepartment"
+              type="text"
+              name="editDepartment"
+              [(ngModel)]="employeeForm.department"
+              placeholder="Engineering"
+            >
+
+          </div>
+
+        </div>
+
+
+        <!-- JOB TITLE -->
+
+        <div class="employee-form-group">
+
+          <label for="editEmployeeJobTitle">
+            JOB TITLE
+          </label>
+
+          <div class="employee-input-wrapper">
+
+            <mat-icon>
+              work_outline
+            </mat-icon>
+
+            <input
+              id="editEmployeeJobTitle"
+              type="text"
+              name="editJobTitle"
+              [(ngModel)]="employeeForm.jobTitle"
+              placeholder="Software Engineer"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- =======================================================
+           EDIT MODAL FOOTER
+      ======================================================== -->
+
+      <div class="employee-modal-footer">
+
+        <button
+          type="button"
+          class="employee-modal-cancel"
+          (click)="closeEditEmployeeModal()">
+
+          Cancel
+
+        </button>
+
+
+        <button
+          type="submit"
+          class="employee-modal-add"
+          [disabled]="isSaving">
+
+          <mat-icon>
+            save
+          </mat-icon>
+
+          {{ isSaving ? 'Saving...' : 'Save Changes' }}
+
+        </button>
+
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
+
+
+
+<!-- =============================================================
+     VIEW EMPLOYEE MODAL
+============================================================== -->
+
+<div
+  class="employee-modal-overlay"
+  *ngIf="showViewEmployeeModal"
+  (click)="closeViewEmployeeModal()">
+
+  <div
+    class="employee-modal employee-view-modal"
+    (click)="$event.stopPropagation()">
+
+
+    <!-- MODAL HEADER -->
+
+    <div class="employee-modal-header">
+
+      <h2>
+        Employee Details
+      </h2>
+
+      <button
+        type="button"
+        class="employee-modal-close"
+        aria-label="Close"
+        (click)="closeViewEmployeeModal()">
+
+        <mat-icon>
+          close
+        </mat-icon>
+
+      </button>
+
+    </div>
+
+
+    <!-- =========================================================
+         VIEW CONTENT
+    ========================================================== -->
+
+    <div
+      class="employee-view-content"
+      *ngIf="selectedEmployee">
+
+
+      <!-- PROFILE -->
+
+      <div class="employee-view-profile">
+
+        <div
+          class="employee-avatar"
+          [ngClass]="selectedEmployee.avatarClass">
+
+          {{ selectedEmployee.initials }}
+
+        </div>
+
+
+        <div>
+
+          <h2>
+            {{ selectedEmployee.name }}
+          </h2>
+
+          <p>
+            {{ selectedEmployee.jobTitle || 'No job title' }}
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- DIVIDER -->
+
+      <div class="employee-divider"></div>
+
+
+      <!-- =======================================================
+           EMPLOYEE DETAILS
+      ======================================================== -->
+
+      <div class="employee-view-details">
+
+
+        <!-- EMAIL -->
+
+        <div class="employee-view-row">
+
+          <mat-icon>
+            mail_outline
+          </mat-icon>
+
+          <div>
+
+            <small>
+              EMAIL
+            </small>
+
+            <span>
+              {{ selectedEmployee.email }}
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- DEPARTMENT -->
+
+        <div class="employee-view-row">
+
+          <mat-icon>
+            business
+          </mat-icon>
+
+          <div>
+
+            <small>
+              DEPARTMENT
+            </small>
+
+            <span>
+              {{ selectedEmployee.department || 'Not specified' }}
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- JOB TITLE -->
+
+        <div class="employee-view-row">
+
+          <mat-icon>
+            work_outline
+          </mat-icon>
+
+          <div>
+
+            <small>
+              JOB TITLE
+            </small>
+
+            <span>
+              {{ selectedEmployee.jobTitle || 'Not specified' }}
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- ASSIGNED ASSETS -->
+
+        <div class="employee-view-row">
+
+          <mat-icon>
+            devices
+          </mat-icon>
+
+          <div>
+
+            <small>
+              ASSIGNED ASSETS
+            </small>
+
+            <span>
+              {{ selectedEmployee.assignedAssets }}
+            </span>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- DIVIDER -->
+
+      <div class="employee-divider"></div>
+
+
+      <!-- =======================================================
+           ASSIGNED ASSETS LIST
+      ======================================================== -->
+
+      <div class="employee-view-assets">
+
+        <h3>
+          Assigned Assets
+        </h3>
+
+
+        <!-- ASSETS -->
+
+        <div
+          class="assigned-asset"
+          *ngFor="let asset of selectedEmployee.assets">
+
+          <mat-icon>
+            devices
+          </mat-icon>
+
+          <span>
+            {{ asset }}
+          </span>
+
+        </div>
+
+
+        <!-- NO ASSETS -->
+
+        <div
+          class="no-assets"
+          *ngIf="selectedEmployee.assets.length === 0">
+
+          No assets assigned
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <!-- =========================================================
+         VIEW MODAL FOOTER
+    ========================================================== -->
+
+    <div class="employee-modal-footer">
+
+      <button
+        type="button"
+        class="employee-modal-cancel"
+        (click)="closeViewEmployeeModal()">
+
+        Close
+
+      </button>
+
+    </div>
+
+  </div>
 
 </div>

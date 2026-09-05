@@ -2,9 +2,18 @@ package com.NexAsset.NexAsset_backend.service.impl;
 
 import com.NexAsset.NexAsset_backend.dto.AssetRequest;
 import com.NexAsset.NexAsset_backend.dto.AssetResponse;
+
 import com.NexAsset.NexAsset_backend.entity.Asset;
+import com.NexAsset.NexAsset_backend.entity.Employee;
+
+import com.NexAsset.NexAsset_backend.exception.ResourceNotFoundException;
+
 import com.NexAsset.NexAsset_backend.repository.AssetRepository;
+import com.NexAsset.NexAsset_backend.repository.EmployeeRepository;
 import com.NexAsset.NexAsset_backend.service.AssetService;
+
+import com.NexAsset.NexAsset_backend.enums.AssetStatus;
+
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -16,6 +25,7 @@ import org.springframework.stereotype.Service;
 public class AssetServiceImpl implements AssetService {
 
     private final AssetRepository assetRepository;
+    private final EmployeeRepository employeeRepository;
 
     @Override
     public AssetResponse createAsset(AssetRequest request) {
@@ -58,7 +68,50 @@ public class AssetServiceImpl implements AssetService {
                 .map(this::mapToResponse)
                 .toList();
     }
+    
+    @Override
+    public AssetResponse assignAsset(Long assetId, Long employeeId) {
 
+        Asset asset = assetRepository.findById(assetId)
+                .orElseThrow(() ->
+                    new ResourceNotFoundException(
+                        "Asset with id " + assetId + " not found"
+                    )
+                );
+
+        Employee employee = employeeRepository.findById(employeeId)
+                .orElseThrow(() ->
+                    new ResourceNotFoundException(
+                        "Employee with id " + employeeId + " not found"
+                    )
+                );
+
+        asset.setAssignedTo(employee);
+        asset.setStatus(AssetStatus.ASSIGNED);
+
+        Asset savedAsset = assetRepository.save(asset);
+
+        return mapToResponse(savedAsset);
+    }
+    
+    @Override
+    public AssetResponse unassignAsset(Long assetId) {
+
+        Asset asset = assetRepository.findById(assetId)
+                .orElseThrow(() ->
+                    new ResourceNotFoundException(
+                        "Asset with id " + assetId + " not found"
+                    )
+                );
+
+        asset.setAssignedTo(null);
+        asset.setStatus(AssetStatus.AVAILABLE);
+
+        Asset savedAsset = assetRepository.save(asset);
+
+        return mapToResponse(savedAsset);
+    }
+    
     private AssetResponse mapToResponse(Asset asset) {
 
         return AssetResponse.builder()

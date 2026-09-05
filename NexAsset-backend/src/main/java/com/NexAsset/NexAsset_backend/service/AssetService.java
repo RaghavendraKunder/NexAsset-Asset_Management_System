@@ -10,4 +10,8 @@ public interface AssetService {
     AssetResponse createAsset(AssetRequest request);
     
     List<AssetResponse> getAllAssets();
+    
+    AssetResponse assignAsset(Long assetId, Long employeeId);
+
+    AssetResponse unassignAsset(Long assetId);
 }

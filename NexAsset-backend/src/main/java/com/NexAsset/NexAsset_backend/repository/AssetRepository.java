@@ -21,4 +21,6 @@ public interface AssetRepository extends JpaRepository<Asset, Long> {
     List<Asset> findByStatus(AssetStatus status);
 
     List<Asset> findByTypeAndStatus(AssetType type, AssetStatus status);
+    
+    List<Asset> findByAssignedToId(Long employeeId);
 }

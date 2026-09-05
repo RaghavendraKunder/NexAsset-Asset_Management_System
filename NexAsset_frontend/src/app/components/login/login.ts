@@ -64,6 +64,7 @@ export class Login {
       // =====================================================
       next: (response: LoginResponse) => {
         console.log('Login successful:', response);
+        localStorage.setItem('token', response.token);
         this.isLoading = false;
         this.showNotification(
           `Welcome back, ${response.name}!`,
