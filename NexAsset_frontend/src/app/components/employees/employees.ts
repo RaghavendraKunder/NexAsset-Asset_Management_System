@@ -16,24 +16,20 @@ import {
 export class Employees {
 
   searchText: string = '';
-
   showAddEmployeeModal: boolean = false;
   showEditEmployeeModal: boolean = false;
   showViewEmployeeModal: boolean = false;
-
   isLoading: boolean = false;
   isSaving: boolean = false;
-
   selectedEmployee: EmployeeResponse | null = null;
-
   employees: EmployeeResponse[] = [];
-
-  employeeForm: EmployeeRequest = {
-    name: '',
-    email: '',
-    department: '',
-    jobTitle: ''
-  };
+  employeeForm: 
+    EmployeeRequest = {
+      name: '',
+      email: '',
+      department: '',
+      jobTitle: ''
+    };
 
   constructor(
   private employeeService: Employee,
@@ -47,397 +43,206 @@ export class Employees {
   });
 }
 
-  // =========================================================
-  // INITIAL LOAD
-  // =========================================================
-
-  
-  // =========================================================
-  // SEARCH
-  // =========================================================
-
+  // ===== SEARCH =====
   get filteredEmployees(): EmployeeResponse[] {
-
-    const search = this.searchText
-      .trim()
-      .toLowerCase();
-
+    const search = this.searchText.trim().toLowerCase();
     if (!search) {
       return this.employees;
     }
-
     return this.employees.filter(employee =>
-      employee.name.toLowerCase().includes(search) ||
+      employee.name.toLowerCase().includes(search) || 
       employee.email.toLowerCase().includes(search) ||
-      (employee.department || '').toLowerCase().includes(search) ||
+      (employee.department || '').toLowerCase().includes(search) || 
       (employee.jobTitle || '').toLowerCase().includes(search)
     );
   }
 
-  //==================LOAD EMPLOYEES=========================
+  //===== LOAD EMPLOYEES =====
    loadEmployees(): void {
-
     this.isLoading = true;
-
     this.employeeService.getAllEmployees().subscribe({
-
       next: (response) => {
-
-  this.employees = response.map((employee, index) => ({
-    ...employee,
-    initials: this.getInitials(employee.name),
-    avatarClass: this.getAvatarClass(index)
-  }));
-
-  this.isLoading = false;
-
-  this.cdr.detectChanges();
-
-  console.log('Employees loaded:', this.employees);
-},
-
-      error: (error) => {
-
+        this.employees = response.map((employee, index) => ({
+        ...employee,
+        initials: this.getInitials(employee.name),
+        avatarClass: this.getAvatarClass(index)
+      }));
+    this.isLoading = false;
+    this.cdr.detectChanges();
+    console.log('Employees loaded:', this.employees);
+    },
+    error: (error) => {
         console.error('Error loading employees:', error);
-
         this.isLoading = false;
-
-        this.showNotification(
-          'Unable to load employees.',
-          'error'
-        );
+        this.showNotification('Unable to load employees.','error');
       }
     });
   }
-  // =========================================================
-  // ADD EMPLOYEE
-  // =========================================================
 
+  // ===== ADD EMPLOYEE =====
   addEmployee(): void {
-
-    this.employeeForm = {
-      name: '',
-      email: '',
-      department: '',
-      jobTitle: ''
-    };
-
+    this.employeeForm = {name: '', email: '', department: '', jobTitle: '' };
     this.isSaving = false;
     this.showAddEmployeeModal = true;
   }
-
   closeAddEmployeeModal(): void {
-
     if (this.isSaving) {
       return;
     }
-
     this.showAddEmployeeModal = false;
   }
-
   submitAddEmployee(): void {
-
-    if (
-      !this.employeeForm.name.trim() ||
-      !this.employeeForm.email.trim()
-    ) {
-
-      this.showNotification(
-        'Name and email are required.',
-        'warning'
-      );
-
+    if (!this.employeeForm.name.trim() || !this.employeeForm.email.trim()) {
+      this.showNotification('Name and email are required.', 'warning');
       return;
     }
-
     if (this.isSaving) {
       return;
     }
-
     this.isSaving = true;
-
     const request: EmployeeRequest = {
       name: this.employeeForm.name.trim(),
       email: this.employeeForm.email.trim(),
       department: this.employeeForm.department.trim(),
       jobTitle: this.employeeForm.jobTitle.trim()
     };
-
     this.employeeService.createEmployee(request).subscribe({
-
       next: (employee) => {
-
         const newEmployee: EmployeeResponse = {
           ...employee,
           initials: this.getInitials(employee.name),
           avatarClass: this.getAvatarClass(this.employees.length)
         };
-
         this.employees.push(newEmployee);
-
         this.isSaving = false;
         this.showAddEmployeeModal = false;
-
-        this.showNotification(
-          'Employee added successfully.',
-          'success'
-        );
+        this.showNotification('Employee added successfully.','success');
       },
-
       error: (error) => {
-
         console.error('Error adding employee:', error);
-
         this.isSaving = false;
-
         if (error.status === 409) {
-
-          this.showNotification(
-            'An employee with this email already exists.',
-            'error'
-          );
-
+          this.showNotification('An employee with this email already exists.','error');
           return;
         }
-
         if (error.status === 400) {
-
-          const message =
-            error.error?.message ||
-            error.error?.error ||
-            'Please enter valid employee details.';
-
-          this.showNotification(
-            message,
-            'error'
-          );
-
+          const message = error.error?.message || error.error?.error ||
+           'Please enter valid employee details.';
+          this.showNotification(message,'error');
           return;
         }
-
-        this.showNotification(
-          'Unable to add employee. Please try again.',
-          'error'
-        );
+        this.showNotification('Unable to add employee. Please try again.','error');
       }
     });
   }
 
-  // =========================================================
-  // VIEW EMPLOYEE
-  // =========================================================
-
+  // ===== VIEW EMPLOYEE ======
   viewEmployee(employee: EmployeeResponse): void {
-
     this.selectedEmployee = employee;
     this.showViewEmployeeModal = true;
   }
-
   closeViewEmployeeModal(): void {
-
     this.showViewEmployeeModal = false;
     this.selectedEmployee = null;
   }
 
-  // =========================================================
-  // EDIT EMPLOYEE
-  // =========================================================
-
+  // ==== EDIT EMPLOYEE ====
   editEmployee(employee: EmployeeResponse): void {
-
     this.selectedEmployee = employee;
-
     this.employeeForm = {
       name: employee.name,
       email: employee.email,
       department: employee.department || '',
       jobTitle: employee.jobTitle || ''
     };
-
     this.isSaving = false;
     this.showEditEmployeeModal = true;
   }
-
   closeEditEmployeeModal(): void {
-
     if (this.isSaving) {
       return;
     }
-
     this.showEditEmployeeModal = false;
     this.selectedEmployee = null;
   }
-
   submitEditEmployee(): void {
-
     if (!this.selectedEmployee) {
       return;
     }
-
-    if (
-      !this.employeeForm.name.trim() ||
-      !this.employeeForm.email.trim()
-    ) {
-
-      this.showNotification(
-        'Name and email are required.',
-        'warning'
-      );
-
+    if (!this.employeeForm.name.trim() || !this.employeeForm.email.trim()) {
+      this.showNotification('Name and email are required.','warning');
       return;
     }
-
     if (this.isSaving) {
       return;
     }
-
     this.isSaving = true;
-
     const employeeId = this.selectedEmployee.id;
-
     const request: EmployeeRequest = {
       name: this.employeeForm.name.trim(),
       email: this.employeeForm.email.trim(),
       department: this.employeeForm.department.trim(),
       jobTitle: this.employeeForm.jobTitle.trim()
     };
-
-    this.employeeService
-      .updateEmployee(employeeId, request)
-      .subscribe({
-
+    this.employeeService.updateEmployee(employeeId, request).subscribe({
         next: (updatedEmployee) => {
-
-          const index = this.employees.findIndex(
-            employee => employee.id === employeeId
-          );
-
+          const index = this.employees.findIndex(employee => employee.id === employeeId);
           if (index !== -1) {
-
             this.employees[index] = {
               ...updatedEmployee,
               initials: this.getInitials(updatedEmployee.name),
-
-              // Preserve existing avatar color
               avatarClass:
-                this.employees[index].avatarClass ||
-                this.getAvatarClass(index)
+                this.employees[index].avatarClass || this.getAvatarClass(index)
             };
           }
-
           this.isSaving = false;
           this.showEditEmployeeModal = false;
           this.selectedEmployee = null;
-
-          this.showNotification(
-            'Employee updated successfully.',
-            'success'
-          );
+          this.showNotification('Employee updated successfully.','success');
         },
-
         error: (error) => {
-
-          console.error(
-            'Error updating employee:',
-            error
-          );
-
+          console.error('Error updating employee:',error);
           this.isSaving = false;
-
           if (error.status === 409) {
-
-            this.showNotification(
-              'An employee with this email already exists.',
-              'error'
-            );
-
+            this.showNotification('An employee with this email already exists.','error');
             return;
           }
-
           if (error.status === 400) {
-
             const message =
-              error.error?.message ||
-              error.error?.error ||
-              'Please enter valid employee details.';
-
-            this.showNotification(
-              message,
-              'error'
-            );
-
+              error.error?.message || error.error?.error ||'Please enter valid employee details.';
+            this.showNotification(message,'error');
             return;
           }
-
-          this.showNotification(
-            'Unable to update employee.',
-            'error'
-          );
+          this.showNotification('Unable to update employee.','error');
         }
       });
   }
 
-  // =========================================================
-  // DELETE EMPLOYEE
-  // =========================================================
-
+  // ==== DELETE EMPLOYEE ====
   deleteEmployee(employee: EmployeeResponse): void {
-
-    const confirmed = window.confirm(
-      `Are you sure you want to delete ${employee.name}?`
-    );
-
+    const confirmed = window.confirm(`Are you sure you want to delete ${employee.name}?`);
     if (!confirmed) {
       return;
     }
-
-    this.employeeService
-      .deleteEmployee(employee.id)
-      .subscribe({
-
+    this.employeeService.deleteEmployee(employee.id).subscribe({
         next: () => {
-
           this.employees = this.employees.filter(
             item => item.id !== employee.id
           );
-
-          this.showNotification(
-            'Employee deleted successfully.',
-            'success'
-          );
+          this.showNotification('Employee deleted successfully.','success');
         },
-
         error: (error) => {
-
-          console.error(
-            'Error deleting employee:',
-            error
-          );
-
-          this.showNotification(
-            'Unable to delete employee.',
-            'error'
-          );
+          console.error('Error deleting employee:',error);
+          this.showNotification('Unable to delete employee.','error');
         }
       });
   }
 
-  // =========================================================
-  // UI HELPERS
-  // =========================================================
-
+  // ==== UI HELPERS ====
   private getInitials(name: string): string {
-
-    return name
-      .trim()
-      .split(/\s+/)
-      .map(part => part.charAt(0).toUpperCase())
-      .slice(0, 2)
-      .join('');
+    return name.trim().split(/\s+/).map(part => part.charAt(0).toUpperCase()).slice(0, 2).join('');
   }
-
   private getAvatarClass(index: number): string {
-
     const avatarClasses = [
       'orange',
       'red',
@@ -448,24 +253,12 @@ export class Employees {
       'cyan',
       'indigo'
     ];
-
-    return avatarClasses[
-      index % avatarClasses.length
-    ];
+    return avatarClasses[index % avatarClasses.length];
   }
 
-  // =========================================================
-  // NOTIFICATION
-  // =========================================================
-
-  private showNotification(
-    message: string,
-    type: 'success' | 'error' | 'warning'
-  ): void {
-
-    this.snackBar.open(
-      message,
-      'Close',
+  // ==== NOTIFICATION ====
+  private showNotification(message: string,type: 'success' | 'error' | 'warning'): void {
+    this.snackBar.open(message,'Close',
       {
         duration: 4000,
         horizontalPosition: 'right',

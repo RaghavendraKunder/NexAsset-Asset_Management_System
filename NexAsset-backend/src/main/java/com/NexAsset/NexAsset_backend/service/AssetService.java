@@ -11,6 +11,10 @@ public interface AssetService {
     
     List<AssetResponse> getAllAssets();
     
+    AssetResponse updateAsset(Long assetId, AssetRequest request);
+
+    void deleteAsset(Long assetId);
+    
     AssetResponse assignAsset(Long assetId, Long employeeId);
 
     AssetResponse unassignAsset(Long assetId);

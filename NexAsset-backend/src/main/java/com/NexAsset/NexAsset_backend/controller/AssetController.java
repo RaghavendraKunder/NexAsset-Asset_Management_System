@@ -22,44 +22,47 @@ public class AssetController {
     }
 
 
+    //============== Creating Asset =================
     @PostMapping
-    public ResponseEntity<AssetResponse> createAsset(
-        @Valid @RequestBody AssetRequest request
-    ) {
-
+    public ResponseEntity<AssetResponse> createAsset(@Valid @RequestBody AssetRequest request) {
         AssetResponse response = assetService.createAsset(request);
-
         return ResponseEntity
             .status(HttpStatus.CREATED)
             .body(response);
     }
-    
+
+    //============== Getting All Asset =================
     @GetMapping
     public ResponseEntity<List<AssetResponse>> getAllAssets() {
-
         List<AssetResponse> assets = assetService.getAllAssets();
-
         return ResponseEntity.ok(assets);
     }
     
+    //================ Assigning Asset ==================
     @PutMapping("/{assetId}/assign/{employeeId}")
-    public ResponseEntity<AssetResponse> assignAsset(
-            @PathVariable Long assetId,
-            @PathVariable Long employeeId) {
+    public ResponseEntity<AssetResponse> assignAsset(@PathVariable Long assetId,@PathVariable Long employeeId) {
+        AssetResponse response = assetService.assignAsset(assetId, employeeId);
+        return ResponseEntity.ok(response);
+    }
 
-        AssetResponse response =
-                assetService.assignAsset(assetId, employeeId);
-
+    //================ Unassigning Asset ===================
+    @PutMapping("/{assetId}/unassign")
+    public ResponseEntity<AssetResponse> unassignAsset(@PathVariable Long assetId) {
+        AssetResponse response = assetService.unassignAsset(assetId);
         return ResponseEntity.ok(response);
     }
     
-    @PutMapping("/{assetId}/unassign")
-    public ResponseEntity<AssetResponse> unassignAsset(
-            @PathVariable Long assetId) {
-
-        AssetResponse response =
-                assetService.unassignAsset(assetId);
-
+    //================ Update Asset ===================
+    @PutMapping("/{assetId}")
+    public ResponseEntity<AssetResponse> updateAsset(@PathVariable Long assetId,@Valid @RequestBody AssetRequest request) {
+        AssetResponse response = assetService.updateAsset(assetId, request);
         return ResponseEntity.ok(response);
+    }
+
+    //================ Delete Asset ===================
+    @DeleteMapping("/{assetId}")
+    public ResponseEntity<Void> deleteAsset(@PathVariable Long assetId) {
+        assetService.deleteAsset(assetId);
+        return ResponseEntity.noContent().build();
     }
 }
